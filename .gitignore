@@ -5,13 +5,13 @@
 /.pnp
 .pnp.js
 /.vscode
-/be
 
 # testing
 /coverage
 
 # production
 /build
+/be
 
 # misc
 .DS_Store

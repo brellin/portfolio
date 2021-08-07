@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from 'react'
-import { NavLink, Route } from 'react-router-dom'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faAt } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { useState, useEffect } from 'react';
+import { NavLink, Route } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faAt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { Home, About, Work } from './components'
-import './App.scss'
+import { Home, About, Work, Blog } from './components';
+import './App.scss';
 
-library.add(fab, faAt)
+library.add(fab, faAt);
 
 const App = () => {
 
-  const [links, setLinks] = useState({ marginTop: '-100%' })
+  const [ links, setLinks ] = useState({ marginTop: '-100%' });
 
   useEffect(_ => {
-    setTimeout(_ => setLinks({ marginTop: 0 }), 1000)
-  }, [])
+    setTimeout(_ => setLinks({ marginTop: 0 }), 1000);
+  }, []);
 
   return <div className="App">
     <nav>
@@ -32,27 +32,28 @@ const App = () => {
     </nav>
 
     <div className="Routes">
-      <Route exact path='/' component={Home} />
-      <Route path='/about' component={About} />
-      <Route path='/work' component={Work} />
+      <Route exact path='/' component={ Home } />
+      <Route path='/about' component={ About } />
+      <Route path='/work' component={ Work } />
+      <Route path='/blog' component={ Blog } />
     </div>
 
-    <footer style={links}>
+    <footer style={ links }>
       <h2>Get in touch</h2>
 
       <div>
         <FontAwesomeIcon
-          icon={['fab', 'github']}
+          icon={ [ 'fab', 'github' ] }
           className='Link'
-          onClick={() => window.open('https://github.com/brellin')}
+          onClick={ () => window.open('https://github.com/brellin') }
         />
       </div>
 
       <div>
         <FontAwesomeIcon
-          icon={['fab', 'linkedin']}
+          icon={ [ 'fab', 'linkedin' ] }
           className='Link'
-          onClick={() => window.open('https://linkedin.com/in/brellin')}
+          onClick={ () => window.open('https://linkedin.com/in/brellin') }
         />
       </div>
 
@@ -60,13 +61,13 @@ const App = () => {
         <FontAwesomeIcon
           icon='at'
           className='Link'
-          onClick={() => window.location = 'mailto: will@willujr.com'}
+          onClick={ () => window.location = 'mailto: will@willujr.com' }
         />
       </div>
     </footer>
 
-  </div>
+  </div>;
 
-}
+};
 
-export default App
+export default App;

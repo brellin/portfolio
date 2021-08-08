@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'https://pfl-be.herokuapp.com';
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'https://pfl-be.herokuapp.com';
 
 export function openFileDialog(callback, accept = '*') {  // this function must be called from  a user
     // activation event (ie an onclick event)

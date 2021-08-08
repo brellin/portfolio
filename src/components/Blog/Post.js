@@ -1,6 +1,11 @@
 import React from 'react';
 
-const Post = ({ text, date, title }) => {
+const Post = ({ post }) => {
+
+    console.log(post);
+
+    const { title, date, text } = post;
+
 
     return <div className='Post'>
         <h1>{ title }</h1>

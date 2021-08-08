@@ -4,6 +4,7 @@ import Post from './Post';
 import NewPost from './NewPost';
 
 import { openFileDialog, axios } from '../../assets';
+import './Blog.scss';
 
 const Blog = props => {
 
@@ -35,8 +36,6 @@ const Blog = props => {
             .catch(err => console.error(err));
 
     }, []);
-
-    console.log(posts);
 
     return <div className='Blog'>
         <h1>Blog</h1>

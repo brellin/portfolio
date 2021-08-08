@@ -1,16 +1,17 @@
 import React from 'react';
+import moment from 'moment';
 
 const Post = ({ post }) => {
 
-    console.log(post);
-
     const { title, date, text } = post;
+
+    console.log(date);
 
 
     return <div className='Post'>
-        <h1>{ title }</h1>
-        <span>{ date }</span>
+        <h2>{ title }</h2>
         <p>{ text }</p>
+        <span>{ moment(date, 'x').format('LLLL') }</span>
     </div>;
 
 };

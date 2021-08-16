@@ -8,12 +8,12 @@ import './Blog.scss';
 
 const Blog = props => {
 
-    function readFile(event) {
+    const readFile = event => {
         const file = event.target.files[ 0 ];
         const fr = new FileReader();
         fr.onload = e => { setProof(JSON.parse(fr.result)); };
         fr.readAsText(file);
-    }
+    };
     const [ proof, setProof ] = useState({});
     const [ isWill, setIsWill ] = useState(false);
     const [ posts, setPosts ] = useState([]);

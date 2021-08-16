@@ -6,6 +6,7 @@ import { faAt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { Home, About, Work, Blog } from './components';
+import PostPage from './components/Blog/PostPage';
 import './App.scss';
 
 library.add(fab, faAt);
@@ -35,7 +36,8 @@ const App = () => {
       <Route exact path='/' component={ Home } />
       <Route path='/about' component={ About } />
       <Route path='/work' component={ Work } />
-      <Route path='/blog' component={ Blog } />
+      <Route exact path='/blog' component={ Blog } />
+      <Route path='/blog/post/:post_id' component={ PostPage } />
     </div>
 
     <footer style={ links }>

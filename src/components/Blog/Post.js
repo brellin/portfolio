@@ -1,16 +1,13 @@
 import React from 'react';
 import moment from 'moment';
+import { useHistory } from 'react-router-dom';
 
-const Post = ({ post }) => {
+const Post = ({ post: { title, date, id } }) => {
 
-    const { title, date, text } = post;
+    const { push } = useHistory();
 
-    console.log(date);
-
-
-    return <div className='Post'>
+    return <div className='Post' onClick={ _ => push(`blog/post/${ id }`) }>
         <h2>{ title }</h2>
-        <p>{ text }</p>
         <span>{ moment(date, 'x').format('LLLL') }</span>
     </div>;
 

@@ -37,7 +37,7 @@ const App = () => {
       <Route path='/about' component={ About } />
       <Route path='/work' component={ Work } />
       <Route exact path='/blog' component={ Blog } />
-      <Route path='/blog/post/:post_id' component={ PostPage } />
+      <Route path='/blog/post/:id' component={ PostPage } />
     </div>
 
     <footer style={ links }>
@@ -63,7 +63,7 @@ const App = () => {
         <FontAwesomeIcon
           icon='at'
           className='Link'
-          onClick={ () => window.location = 'mailto: will@willujr.com' }
+          onClick={ () => window.location = 'mailto: william.c.umstead@gmail.com' }
         />
       </div>
     </footer>

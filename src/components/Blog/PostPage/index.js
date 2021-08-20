@@ -26,7 +26,7 @@ const PostPage = ({ edit }) => {
             />
             :
             <h2>{ post.title }</h2> }
-        <span>{ `${ post.name } on ${ moment(post.date, 'x').format('LL') }` }</span>
+        <span>{ `${ post.name } on ${ moment(post.date, 'x').format('LL') }${ edit ? ` (last edited on ${ moment(Date.now(), 'x').format('LL') })` : '' }` }</span>
         { edit ?
             <textarea
                 value={ post.text }

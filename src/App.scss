@@ -3,7 +3,7 @@
 
 div.App {
     @include flex(column, flex-start, center, wrap);
-    max-width: 100%;
+    max-width: 100vw;
 
     nav {
         @include flex(row, center, center);
@@ -79,7 +79,7 @@ div.App {
     div.Routes {
         margin: 75px 25px 0;
         min-height: 65vh;
-        width: calc(100%-50px);
+        width: 90%;
     }
         
     footer {

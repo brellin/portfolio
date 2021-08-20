@@ -37,7 +37,8 @@ const App = () => {
       <Route path='/about' component={ About } />
       <Route path='/work' component={ Work } />
       <Route exact path='/blog' component={ Blog } />
-      <Route path='/blog/post/:id' component={ PostPage } />
+      <Route exact path='/blog/post/:id' component={ PostPage } />
+      <Route path='/blog/post/:id/edit' component={ _ => <PostPage edit /> } />
     </div>
 
     <footer style={ links }>

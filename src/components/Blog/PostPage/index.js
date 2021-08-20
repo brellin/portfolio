@@ -5,7 +5,7 @@ import { axios } from '../../../assets';
 
 import './pp.scss';
 
-const PostPage = props => {
+const PostPage = ({ edit }) => {
 
     const { id } = useParams();
 
@@ -17,10 +17,23 @@ const PostPage = props => {
             .catch(err => console.error(err));
     }, [ id ]);
 
-    return <div className='Post'>
-        <h2>{ post.title }</h2>
+    return <div className={ `Post${ edit ? ' Edit' : '' }` }>
+        { edit ?
+            <input
+                type="text"
+                value={ post.title }
+                onChange={ e => setPost({ ...post, title: e.target.value }) }
+            />
+            :
+            <h2>{ post.title }</h2> }
         <span>{ `${ post.name } on ${ moment(post.date, 'x').format('LL') }` }</span>
-        <p>{ post.text }</p>
+        { edit ?
+            <textarea
+                value={ post.text }
+                onChange={ e => setPost({ ...post, text: e.target.value }) }
+            />
+            :
+            <p>{ post.text }</p> }
     </div>;
 
 };

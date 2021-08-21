@@ -57,13 +57,19 @@ const PostPage = ({ edit, newPost }) => {
             <button onClick={ _ => edit ? axios
 
                 .put(`/posts/${ id }`, post)
-                .then(r => console.log(r))
+                .then(r => {
+                    console.log(r);
+                    push(`/blog/post/${ id }`);
+                })
 
                 .catch(err => console.error(err))
                 :
                 axios
                     .post('/posts/new', post)
-                    .then(r => console.log(r))
+                    .then(r => {
+                        console.log(r);
+                        push(`/blog/post/${ r.data.id }`);
+                    })
 
                     .catch(err => console.error(err))
             }>Submit</button> : null }

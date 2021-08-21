@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink, Route, Switch } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faAt } from '@fortawesome/free-solid-svg-icons';
@@ -37,7 +37,10 @@ const App = () => {
       <Route path='/about' component={ About } />
       <Route path='/work' component={ Work } />
       <Route exact path='/blog' component={ Blog } />
-      <Route exact path='/blog/post/:id' component={ PostPage } />
+      <Switch>
+        <Route exact path='/blog/post/new' component={ _ => <PostPage newPost /> } />
+        <Route exact path='/blog/post/:id' component={ PostPage } />
+      </Switch>
       <Route path='/blog/post/:id/edit' component={ _ => <PostPage edit /> } />
     </div>
 

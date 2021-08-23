@@ -20,7 +20,7 @@ div.About {
         font-size: 2rem;
 
         a {
-            color: whitesmoke;
+            color: $mid;
             text-decoration: none;
             position: relative;
             
@@ -35,7 +35,7 @@ div.About {
             
             &:hover {
                 &::before {
-                    background: whitesmoke;
+                    background: $mid;
                     transform: translateY(20px);
                 }
             }

@@ -1,14 +1,14 @@
-import React from 'react'
+import React from 'react';
 
-import { me } from '../../images'
-import './About.scss'
+import { me } from '../../images';
+import './About.scss';
 
 const About = props => {
 
     return <div className="About">
         <h1>About</h1>
-        <img src={me} alt="Will Umstead" />
-        <p>{`Hi! My name is Will. I started working with HTML, CSS, and PHP in 2008 during the summer of my sophomore year when I was in high school.
+        <img src={ me } alt="Will Umstead" />
+        <p>{ `Hi! My name is Will. I started working with HTML, CSS, and PHP in 2008 during the summer of my sophomore year when I was in high school.
 
         I taught my webmastering class the following two years, made a website, and never did anything with it. Shortly after, I joined the army, went to South Korea, and realized that computer languages aren't the only type that I'm good at learning.
 
@@ -18,21 +18,23 @@ const About = props => {
 
         Ich spreche ein Wenig Deutsch. (German)
 
+        J'apprends le françias maintenant. (French)
+
         I decided to go to college to pursue this new world of interests, just to find that the school that I was accepted to made the executive decision to drop all of the non-basic language classes that I was wishing to pursue.
 
-        Now, here I am - engaging with a delightful school known as `}<a
+        After all of that, I re-discovered my passion for coding and decided to pursue that skill at a school known as `}<a
                 target='_blank'
-                href={'https://lambdaschool.com'}
+                href={ 'https://lambdaschool.com' }
                 rel='noopener noreferrer'
-            >Lambda</a>{`!
+            >Lambda</a>{ `!
 
-        During my time at Lambda, I have been able to research, learn, and develop my programming skills. I have re-discovered my passion for problem solving and have been involved in as many projects as I can manage.
+        During my time at Lambda, I was able to research, learn, and develop my coding skills.
+        
+        Along the journey of finding income within the realm of programming, I am working a local job to sustain myself.
+        
+        Thank you for taking the time to read this. Have a good one!`}</p>
+    </div>;
 
-        *applause*
+};
 
-        *curtain closes*`}</p>
-    </div>
-
-}
-
-export default About
+export default About;

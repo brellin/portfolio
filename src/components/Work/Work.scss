@@ -107,35 +107,5 @@ div.Work {
                 }
             }
         }
-
-        &.BlackHole {
-            background-image: linear-gradient(#000000aa, #000000aa),
-            url(../../images/blackhole.png);
-
-            &:hover {
-                background-image: linear-gradient(#00000080, #00000080),
-                url(../../images/blackhole.png);
-            }
-        }
-
-        &.Howl {
-            background-image: linear-gradient(#000000aa, #000000aa),
-            url(../../images/howl.png);
-
-            &:hover {
-                background-image: linear-gradient(#00000080, #00000080),
-                url(../../images/howl.png);
-            }
-        }
-
-        &.Chao {
-            background-image: linear-gradient(#000000aa, #000000aa),
-            url(../../images/chao.png);
-
-            &:hover {
-                background-image: linear-gradient(#00000080, #00000080),
-                url(../../images/chao.png);
-            }
-        }
     }
 }

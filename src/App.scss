@@ -1,5 +1,9 @@
 @import 'variables';
 
+$home: -122px;
+$about: -36px;
+$work: 51px;
+$blog: 130px;
 
 div.App {
     @include flex(column, flex-start, center, wrap);
@@ -26,40 +30,50 @@ div.App {
             margin: 0 5px;
             outline: none;
 
-            &.home{
+            &.home {
                 &:hover ~ hr {
-                    @include transform(translate(-139px, 10px) !important);
+                    @include transform(translate($home, 10px) !important);
                     width: 5rem !important;
                 }
                 
                 &.active ~ hr{
-                    @include transform(translate(-139px, 10px));
+                    @include transform(translate($home, 10px));
                 }
             }
             
             &.about {
                 &:hover ~ hr {
-                    @include transform(translate(-52.5px, 10px) !important);
+                    @include transform(translate($about, 10px) !important);
                     width: 5rem !important;
                 }
                 
                 &.active ~ hr {
-                    @include transform(translate(-52.5px, 10px));
+                    @include transform(translate($about, 10px));
                 }
             }
             
             &.work {
-                &:hover ~ hr,
+                &:hover ~ hr {
+                    @include transform(translate($work, 10px) !important);
+                    width: 4.25rem !important;
+                }
+                
                 &.active ~ hr {
-                    @include transform(translate(33px, 10px));
-                    width: 4.25rem;    
+                    @include transform(translate($work, 10px));
+                    width: 4.25rem; 
                 }
             } 
             
-            &:nth-child(4).active ~ hr, 
-            &:nth-child(4):hover ~ hr {
-                @include transform(translate(128px, 10px));
-                width: 70px;
+            &.blog{
+                &:hover ~ hr {
+                    @include transform(translate($blog, 10px) !important);
+                    width: 3.5rem !important;
+                }
+
+                &.active ~ hr {
+                    @include transform(translate($blog, 10px));
+                    width: 3.5rem;
+                }
             }
 
         }

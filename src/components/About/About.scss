@@ -18,6 +18,8 @@ div.About {
     p {
         white-space: pre-line;
         font-size: 2rem;
+        background: $text-bg;
+        box-shadow: 0 0 250px 15px $text-bg;
 
         a {
             color: $mid;

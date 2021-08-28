@@ -2,15 +2,16 @@
 
 div.Post {
     width: 100%;
-    background: $blog-bg;
     margin: 50px auto 0;
     @include flex(column, center, center, wrap);
+    background: $text-bg;
+    box-shadow: 0 0 250px 15px $text-bg;
     
     h2 {
         margin: 0;
         font-size: 4rem;
     }
-
+    
     input {
         font-size: 4rem;
     }

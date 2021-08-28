@@ -1,23 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink, Route, Switch } from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faAt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import VSensor from 'react-visibility-sensor';
 
-import { Home, About, Work, Blog } from './components';
-import PostPage from './components/Blog/PostPage';
+import Routes from './Routes';
 import './App.scss';
 
 library.add(fab, faAt);
 
-const App = () => {
-
-  const [ links, setLinks ] = useState({ marginTop: '-100%' });
-
-  useEffect(_ => {
-    setTimeout(_ => setLinks({ marginTop: 0 }), 1000);
-  }, []);
+const App = _ => {
 
   return <div className="App">
     <nav>
@@ -32,45 +26,38 @@ const App = () => {
       <hr />
     </nav>
 
-    <div className="Routes">
-      <Route exact path='/' component={ Home } />
-      <Route path='/about' component={ About } />
-      <Route path='/work' component={ Work } />
-      <Route exact path='/blog' component={ Blog } />
-      <Switch>
-        <Route exact path='/blog/post/new' component={ _ => <PostPage newPost /> } />
-        <Route exact path='/blog/post/:id' component={ PostPage } />
-      </Switch>
-      <Route path='/blog/post/:id/edit' component={ _ => <PostPage edit /> } />
-    </div>
+    <Routes />
 
-    <footer style={ links }>
-      <h2>Get in touch</h2>
+    <VSensor>
+      { ({ isVisible }) =>
+        <footer className={ isVisible ? 'visible' : 'invisible' }>
+          <h2>Get in touch</h2>
 
-      <div>
-        <FontAwesomeIcon
-          icon={ [ 'fab', 'github' ] }
-          className='Link'
-          onClick={ () => window.open('https://github.com/brellin') }
-        />
-      </div>
+          <div>
+            <FontAwesomeIcon
+              icon={ [ 'fab', 'github' ] }
+              className='Link'
+              onClick={ () => window.open('https://github.com/brellin') }
+            />
+          </div>
 
-      <div>
-        <FontAwesomeIcon
-          icon={ [ 'fab', 'linkedin' ] }
-          className='Link'
-          onClick={ () => window.open('https://linkedin.com/in/brellin') }
-        />
-      </div>
+          <div>
+            <FontAwesomeIcon
+              icon={ [ 'fab', 'linkedin' ] }
+              className='Link'
+              onClick={ () => window.open('https://linkedin.com/in/brellin') }
+            />
+          </div>
 
-      <div>
-        <FontAwesomeIcon
-          icon='at'
-          className='Link'
-          onClick={ () => window.location = 'mailto: william.c.umstead@gmail.com' }
-        />
-      </div>
-    </footer>
+          <div>
+            <FontAwesomeIcon
+              icon='at'
+              className='Link'
+              onClick={ () => window.location = 'mailto: william.c.umstead@gmail.com' }
+            />
+          </div>
+        </footer> }
+    </VSensor>
 
   </div>;
 

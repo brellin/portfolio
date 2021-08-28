@@ -1,32 +1,40 @@
 @import '../../variables.scss';
 
-div.Blog{
+div.Blog {
+    width: 100%;
     
     h1 {
         font-size: 8rem;
     }
 
-    div.Post {
-        border: 1px solid black;
-        border-radius: 25px;
-        padding: 20px 30px;
-        margin: 20px auto;
-        background: $blog-bg;
-        cursor: pointer;
-        transition: .3s ease-out;
+    div.PostWall {
+        width: 100%;
+        @include flex(column, flex-start, center);
         
-        h2 {
-            margin: 0;
-            font-size: 4rem;
-        }
-
-        span {
-            font-size: 1.5rem;
-            color: slategray;
-        }
-
-        &:hover {
-            transform: scale(1.05);
+        div.Post {
+            width: calc(100% - 60px);
+            border: 1px solid black;
+            border-radius: 25px;
+            padding: 20px 30px;
+            margin: 20px 0;
+            background: $blog-bg;
+            cursor: pointer;
+            transition: .3s ease-out;
+            
+            h2 {
+                margin: 0;
+                font-size: 4rem;
+            }
+            
+            span {
+                font-size: 1.5rem;
+                color: slategray;
+            }
+            
+            &:hover {
+                transform: scale(1.05);
+            }
+            
         }
 
     }

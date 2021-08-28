@@ -77,7 +77,7 @@ div.App {
     }
 
     div.Routes {
-        margin: 75px 25px 0;
+        margin: 75px auto 0;
         min-height: 65vh;
         width: 90%;
     }
@@ -88,6 +88,11 @@ div.App {
         width: 50%;
         margin: 0 auto 20px;
         transition: 1s ease-out;
+
+        &.invisible {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
 
         @media (max-width: 500px) {
             width: 100%;

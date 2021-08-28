@@ -23,6 +23,7 @@ const Work = props => {
                     } }
                     onMouseEnter={ _ => setHovered(true) }
                     onMouseLeave={ _ => setHovered(false) }
+                    key={ p.title }
                 >
                     <h2>{ p.title }</h2>
                     <p onClick={ _ => window.open(p.url) }>

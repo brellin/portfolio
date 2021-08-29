@@ -26,3 +26,17 @@ $body-font: 'Do Hyeon', sans-serif;
 	-ms-transform: $transforms;
 	transform: $transforms;
 }
+
+@mixin button($size) {
+    font-size: $size;
+    background: $mid;
+    color: $light;
+    border: none;
+    border-radius: 5px;
+    transition: .3s ease;
+    cursor: pointer;
+
+    &:hover {
+        @include transform(scale(1.2));
+    }
+}

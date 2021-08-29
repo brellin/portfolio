@@ -68,7 +68,7 @@ const PostPage = ({ edit, newPost }) => {
                 value={ post.title }
                 onChange={ e => setPost({ ...post, title: e.target.value }) }
             />
-            <span>{ `${ 'Name' } on ${ moment(post.date || Date.now().toString(), 'x').format('LL') }${ (edit || post.edited) ? ` (last edited on ${ moment(edit ? Date.now() : post.edited, 'x').format('LL') })` : '' }` }</span>
+            <span>{ `${ proof.name } on ${ moment(post.date || Date.now().toString(), 'x').format('LL') }${ (edit || post.edited) ? ` (last edited on ${ moment(edit ? Date.now() : post.edited, 'x').format('LL') })` : '' }` }</span>
             <textarea
                 value={ post.text }
                 onChange={ e => setPost({ ...post, text: e.target.value }) }

@@ -69,12 +69,14 @@ const PostPage = ({ edit, newPost }) => {
                 value={ post.title }
                 onChange={ e => setPost({ ...post, title: e.target.value }) }
                 placeholder='Title'
+                disabled={ !isWill }
             />
             <span>{ `${ proof.name } on ${ moment(post.date || Date.now().toString(), 'x').format('LL') }${ (edit || post.edited) ? ` (last edited on ${ moment(edit ? Date.now() : post.edited, 'x').format('LL') })` : '' }` }</span>
             <textarea
                 value={ post.text }
                 onChange={ e => setPost({ ...post, text: e.target.value }) }
                 placeholder='Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, eaque dignissimos a soluta enim optio ipsum odio quis provident nostrum totam, voluptatem autem ipsam ducimus laboriosam dolores neque deleniti doloremque.'
+                disabled={ !isWill }
             />
             { isWill ?
                 <button onClick={ submitPost }>Submit</button>

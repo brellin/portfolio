@@ -37,15 +37,16 @@ const PostPage = ({ edit, newPost }) => {
 
         const [ isWill, setIsWill ] = useState(false);
 
-        const sendData = _ => edit ? axios
+        const submitPost = _ => edit ?
+            axios
 
-            .put(`/posts/${ id }`, post)
-            .then(r => {
-                console.log(r);
-                push(`/blog/post/${ id }`);
-            })
+                .put(`/posts/${ id }`, post)
+                .then(r => {
+                    console.log(r);
+                    push(`/blog/post/${ id }`);
+                })
 
-            .catch(err => console.error(err))
+                .catch(err => console.error(err))
             :
             axios
                 .post('/posts/new', post)
@@ -56,7 +57,7 @@ const PostPage = ({ edit, newPost }) => {
 
                 .catch(err => console.error(err));
 
-        return <div className="Post">
+        return <div className="Post Edit">
             { !isWill ? <div className="Restricted">
                 <div className="Verification">
                     <button onClick={ _ => openFileDialog(setProof) }>CHECK YOURSELF</button>
@@ -67,14 +68,16 @@ const PostPage = ({ edit, newPost }) => {
                 type="text"
                 value={ post.title }
                 onChange={ e => setPost({ ...post, title: e.target.value }) }
+                placeholder='Title'
             />
             <span>{ `${ proof.name } on ${ moment(post.date || Date.now().toString(), 'x').format('LL') }${ (edit || post.edited) ? ` (last edited on ${ moment(edit ? Date.now() : post.edited, 'x').format('LL') })` : '' }` }</span>
             <textarea
                 value={ post.text }
                 onChange={ e => setPost({ ...post, text: e.target.value }) }
+                placeholder='Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, eaque dignissimos a soluta enim optio ipsum odio quis provident nostrum totam, voluptatem autem ipsam ducimus laboriosam dolores neque deleniti doloremque.'
             />
             { isWill ?
-                <button onClick={ sendData }>Submit</button>
+                <button onClick={ submitPost }>Submit</button>
                 : null }
         </div>;
     }

@@ -63,6 +63,18 @@ const PostPage = ({ edit, newPost }) => {
                     <button onClick={ _ => openFileDialog(setProof) }>CHECK YOURSELF</button>
                 </div>
             </div> : null }
+            { edit ? <button
+                className='x'
+                onClick={ _ => {
+                    window.confirm(`Do you really want to delete ${ post.title }?`) ?
+                        axios
+                            .delete(`/posts/${ id }`)
+                            .then(_ => push('/blog'))
+                            .catch(err => console.error(err))
+                        :
+                        alert('You have chosen not to delete the post.');
+                } }
+            >X</button> : null }
 
             <input
                 type="text"

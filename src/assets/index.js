@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment';
 
 axios.defaults.baseURL = process.env.REACT_APP_ENV === 'DEVELOPMENT' ? 'http://localhost:5000' : 'https://pfl-be.herokuapp.com';
 
@@ -17,8 +18,11 @@ const openFileDialog = callback => {
     inputElement.dispatchEvent(new MouseEvent("click"));
 };
 
+const momentize = date => moment(date, 'x').format('LL');
+
 export {
     axios,
     openFileDialog,
-    readFile
+    readFile,
+    momentize
 };

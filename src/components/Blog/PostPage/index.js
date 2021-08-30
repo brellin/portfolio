@@ -1,7 +1,6 @@
-import moment from 'moment';
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { axios, openFileDialog } from '../../../assets';
+import { axios, openFileDialog, momentize } from '../../../assets';
 
 import './pp.scss';
 
@@ -83,7 +82,7 @@ const PostPage = ({ edit, newPost }) => {
                 placeholder='Title'
                 disabled={ !isWill }
             />
-            <span>{ `${ proof.name } on ${ moment(post.date || Date.now().toString(), 'x').format('LL') }${ (edit || post.edited) ? ` (last edited on ${ moment(edit ? Date.now() : post.edited, 'x').format('LL') })` : '' }` }</span>
+            <span>{ `${ proof.name } on ${ momentize(post.date || Date.now().toString(), 'x') }${ (edit || post.edited) ? ` (last edited on ${ momentize(edit ? Date.now() : post.edited, 'x') })` : '' }` }</span>
             <textarea
                 value={ post.text }
                 onChange={ e => setPost({ ...post, text: e.target.value }) }
@@ -98,7 +97,7 @@ const PostPage = ({ edit, newPost }) => {
 
     return <div className='Post'>
         <h2>{ post.title }</h2>
-        <span>{ `${ post.name } on ${ moment(post.date, 'x').format('LL') }${ (edit || post.edited) ? ` (last edited on ${ moment(edit ? Date.now() : post.edited, 'x').format('LL') })` : '' }` }</span>
+        <span>{ `${ post.name } on ${ momentize(post.date, 'x') }${ (edit || post.edited) ? ` (last edited on ${ momentize(edit ? Date.now() : post.edited, 'x') })` : '' }` }</span>
         <p>{ post.text }</p>
     </div>;
 

@@ -21,7 +21,7 @@ const Blog = props => {
 
         <div className='PostWall'>
             { posts.length ?
-                posts.map(post =>
+                posts.sort((x, y) => x[ 'edited' || 'date' ] > y[ 'edited' || 'date' ]).map(post =>
                     <Post
                         key={ post.title + post.id }
                         post={ post }

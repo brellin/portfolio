@@ -20,9 +20,12 @@ const openFileDialog = callback => {
 
 const momentize = date => moment(date, 'x').format('LL');
 
+const editedString = (created, edited) => `Created ${ momentize(created) }${ edited ? ` (edited ${ momentize(edited) })` : '' }`;
+
 export {
     axios,
     openFileDialog,
     readFile,
-    momentize
+    momentize,
+    editedString
 };

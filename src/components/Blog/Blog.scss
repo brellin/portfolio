@@ -13,7 +13,7 @@ div.Blog {
         
         div.Post {
             width: calc(100% - 60px);
-            border: 1px solid black;
+            border: 1px solid $dark;
             border-radius: 25px;
             padding: 20px 30px;
             margin: 20px 0;
@@ -33,6 +33,28 @@ div.Blog {
             
             &:hover {
                 transform: scale(1.05);
+            }
+
+            &.Loading {
+                animation: shine ease-in-out 3s infinite;
+                background: linear-gradient(to right, $text-bg 25%, $mid, $text-bg 75%);
+                background-size: 400%;
+
+                h2 {
+                    background: $mid;
+                    width: 75%;
+                    height: 4rem;
+                    border-radius: 25px;
+                }
+
+                span {
+                    background: slategray;
+                    width: 25%;
+                    height: 2rem;
+                    border-radius: 25px;
+                    margin-top: 15px;
+                }
+                
             }
             
         }

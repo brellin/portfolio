@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { momentize } from '../../assets';
+import { editedString } from '../../assets';
 
 const Post = ({ post: { title, date, id, edited } }) => {
 
@@ -9,9 +9,12 @@ const Post = ({ post: { title, date, id, edited } }) => {
 
     console.log(title, edited);
 
-    return <div className='Post' onClick={ _ => push(`blog/post/${ id }`) }>
+    return <div
+        className='Post'
+        onClick={ _ => push(`blog/post/${ id }`) }
+    >
         <h2>{ title }</h2>
-        <span>{ `Created ${ momentize(date) }${ edited ? ` (edited ${ momentize(edited) })` : '' }` }</span>
+        <span>{ editedString(date, edited) }</span>
     </div>;
 
 };

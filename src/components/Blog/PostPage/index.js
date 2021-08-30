@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { axios, openFileDialog, momentize } from '../../../assets';
+import { axios, openFileDialog, editedString } from '../../../assets';
 
 import './pp.scss';
 
@@ -28,7 +28,7 @@ const PostPage = ({ edit, newPost }) => {
                     .then(res => res.status === (200 || 204) && setIsWill(true))
                     .catch(err => {
                         console.error(err);
-                        push('/wrong');
+                        alert('Nice try, but you are not me.');
                     });
             }
 
@@ -82,7 +82,7 @@ const PostPage = ({ edit, newPost }) => {
                 placeholder='Title'
                 disabled={ !isWill }
             />
-            <span>{ `${ proof.name } on ${ momentize(post.date || Date.now().toString(), 'x') }${ (edit || post.edited) ? ` (last edited on ${ momentize(edit ? Date.now() : post.edited, 'x') })` : '' }` }</span>
+            <span>{ editedString(post.date, post.edited) }</span>
             <textarea
                 value={ post.text }
                 onChange={ e => setPost({ ...post, text: e.target.value }) }
@@ -97,7 +97,7 @@ const PostPage = ({ edit, newPost }) => {
 
     return <div className='Post'>
         <h2>{ post.title }</h2>
-        <span>{ `${ post.name } on ${ momentize(post.date, 'x') }${ (edit || post.edited) ? ` (last edited on ${ momentize(edit ? Date.now() : post.edited, 'x') })` : '' }` }</span>
+        <span>{ editedString(post.date, post.edited) }</span>
         <p>{ post.text }</p>
     </div>;
 

@@ -14,7 +14,7 @@ const Post = ({ post: { title, date, id, edited }, loading }) => {
         onClick={ _ => push(`blog/post/${ id }`) }
     >
         <h2>{ title }</h2>
-        <span>{ editedString(date, edited) }</span>
+        <span>{ loading ? '' : editedString(date, edited) }</span>
     </div>;
 
 };

@@ -3,14 +3,14 @@ import { useHistory } from 'react-router-dom';
 
 import { editedString } from '../../assets';
 
-const Post = ({ post: { title, date, id, edited } }) => {
+const Post = ({ post: { title, date, id, edited }, loading }) => {
 
     const { push } = useHistory();
 
     console.log(title, edited);
 
     return <div
-        className='Post'
+        className={ `Post${ loading ? ' Loading' : '' }` }
         onClick={ _ => push(`blog/post/${ id }`) }
     >
         <h2>{ title }</h2>

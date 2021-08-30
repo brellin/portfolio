@@ -6,7 +6,7 @@ import './Blog.scss';
 
 const Blog = _ => {
 
-    const [ posts, setPosts ] = useState([]);
+    const [ posts, setPosts ] = useState([ { id: 1, title: '', date: '', edited: '' }, { id: 2, title: '', date: '', edited: '' }, { id: 3, title: '', date: '', edited: '' }, { id: 4, title: '', date: '', edited: '' }, { id: 5, title: '', date: '', edited: '' }, ]);
     const [ loading, setLoading ] = useState(true);
 
     useEffect(_ => {
@@ -20,43 +20,23 @@ const Blog = _ => {
 
     }, []);
 
+    console.log(posts);
+
     return <div className='Blog'>
         <h1>Blog</h1>
 
         <div className='PostWall'>
-            { loading ?
-                <>
-                    { postLoading() }
-                </>
-                :
-                posts
-                    .sort((x, y) => x[ 'edited' || 'date' ] > y[ 'edited' || 'date' ])
-                    .map(post =>
-                        <Post
-                            key={ post.title + post.id }
-                            post={ post }
-                        />)
-            }
+            { posts
+                .sort((x, y) => x[ 'edited' || 'date' ] > y[ 'edited' || 'date' ])
+                .map(post =>
+                    <Post
+                        key={ post.title + post.id }
+                        post={ post }
+                        loading={ loading }
+                    />) }
         </div>
     </div>;
 
-};
-
-const postLoading = _ => {
-    const createPost = _ => {
-        const pst = document.createElement('div');
-        pst.className = 'Post Loading';
-        pst.appendChild(document.createElement('h2'));
-        pst.appendChild(document.createElement('span'));
-        return pst;
-    };
-    window.addEventListener('load', _ => {
-        document.getElementsByClassName('PostWall').item(0).appendChild(createPost());
-        document.getElementsByClassName('PostWall').item(0).appendChild(createPost());
-        document.getElementsByClassName('PostWall').item(0).appendChild(createPost());
-        document.getElementsByClassName('PostWall').item(0).appendChild(createPost());
-        document.getElementsByClassName('PostWall').item(0).appendChild(createPost());
-    });
 };
 
 export default Blog;

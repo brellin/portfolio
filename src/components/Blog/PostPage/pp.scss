@@ -66,6 +66,7 @@ div.Restricted {
         
         button {
             @include button(5rem);
+            font-weight: bold;
         }
 
     }

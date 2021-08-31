@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { Home, About, Work, Blog, PostPage } from '../components';
+import { Home, About, Work, Blog, PostPage, EditPostPage } from '../components';
 
 const Routes = props => {
 
@@ -11,10 +11,10 @@ const Routes = props => {
         <Route path='/work' component={ Work } />
         <Route exact path='/blog' component={ Blog } />
         <Switch>
-            <Route exact path='/blog/post/new' component={ _ => <PostPage newPost /> } />
+            <Route exact path='/blog/post/new' component={ _ => <EditPostPage newPost /> } />
             <Route exact path='/blog/post/:id' component={ PostPage } />
         </Switch>
-        <Route path='/blog/post/:id/edit' component={ _ => <PostPage edit /> } />
+        <Route path='/blog/post/:id/edit' component={ _ => <EditPostPage edit /> } />
     </div>;
 
 };

@@ -7,8 +7,6 @@ const Post = ({ post: { title, date, id, edited }, loading }) => {
 
     const { push } = useHistory();
 
-    console.log(title, edited);
-
     return <div
         className={ `Post${ loading ? ' Loading' : '' }` }
         onClick={ _ => push(`blog/post/${ id }`) }

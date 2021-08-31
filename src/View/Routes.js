@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import { Home, About, Work, Blog, PostPage, EditPostPage } from '../components';
 
@@ -10,10 +10,8 @@ const Routes = props => {
         <Route path='/about' component={ About } />
         <Route path='/work' component={ Work } />
         <Route exact path='/blog' component={ Blog } />
-        <Switch>
-            <Route exact path='/blog/post/new' component={ _ => <EditPostPage newPost /> } />
-            <Route exact path='/blog/post/:id' component={ PostPage } />
-        </Switch>
+        <Route exact path='/blog/new' component={ _ => <EditPostPage newPost /> } />
+        <Route exact path='/blog/post/:id' component={ PostPage } />
         <Route path='/blog/post/:id/edit' component={ _ => <EditPostPage edit /> } />
     </div>;
 

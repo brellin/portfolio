@@ -1,36 +1,22 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "Sampling the full stack web development work of William Charles Umstead Junior",
+  "main": "src/index.html",
+  "repository": "https://github.com/brellin/portfolio-website.git",
+  "author": "brellin <cekakid@gmail.com>",
+  "license": "GPL-3.0",
+  "private": false,
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.12.1",
-    "@fortawesome/fontawesome-svg-core": "^1.2.27",
-    "@fortawesome/free-brands-svg-icons": "^5.12.1",
-    "@fortawesome/free-solid-svg-icons": "^5.12.1",
-    "@fortawesome/react-fontawesome": "^0.1.8",
-    "axios": "^0.21.1",
-    "moment": "^2.29.1",
-    "node-sass": "^4.11.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-github-calendar": "^3.0.1",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "2.1.8",
-    "react-visibility-sensor": "^5.1.1"
+    "router-vanilla": "^1.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "cd src/js && mkdir classes && cp -r ../../node_modules/router-vanilla/*.js classes/",
+    "start": "node server.js"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "devDependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.13",
+    "open": "^8.2.1"
+  }
 }

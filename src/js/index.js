@@ -20,6 +20,16 @@ const routes = [
         title: 'About',
         view: About
     },
+    {
+        path: '/work',
+        title: 'Work',
+        view: About
+    },
+    {
+        path: '/blog',
+        title: 'Blog',
+        view: About
+    },
 ];
 
 const router = new Router(root, nav, display, routes);

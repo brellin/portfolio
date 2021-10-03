@@ -63,14 +63,70 @@ body div.wrap div.root nav a {
   padding: 5px 15px;
   margin: 0 5px;
 }
+body div.wrap div.root nav a:nth-child(1):hover ~ hr {
+  -webkit-transform: translate(-123px, 10px) !important;
+  -moz-transform: translate(-123px, 10px) !important;
+  -ms-transform: translate(-123px, 10px) !important;
+  transform: translate(-123px, 10px) !important;
+  width: 5rem !important;
+}
+body div.wrap div.root nav a:nth-child(1).active ~ hr {
+  -webkit-transform: translate(-123px, 10px);
+  -moz-transform: translate(-123px, 10px);
+  -ms-transform: translate(-123px, 10px);
+  transform: translate(-123px, 10px);
+  width: 5rem;
+}
+body div.wrap div.root nav a:nth-child(2):hover ~ hr {
+  -webkit-transform: translate(-36px, 10px) !important;
+  -moz-transform: translate(-36px, 10px) !important;
+  -ms-transform: translate(-36px, 10px) !important;
+  transform: translate(-36px, 10px) !important;
+  width: 5rem !important;
+}
+body div.wrap div.root nav a:nth-child(2).active ~ hr {
+  -webkit-transform: translate(-36px, 10px);
+  -moz-transform: translate(-36px, 10px);
+  -ms-transform: translate(-36px, 10px);
+  transform: translate(-36px, 10px);
+  width: 5rem;
+}
+body div.wrap div.root nav a:nth-child(3):hover ~ hr {
+  -webkit-transform: translate(51px, 10px) !important;
+  -moz-transform: translate(51px, 10px) !important;
+  -ms-transform: translate(51px, 10px) !important;
+  transform: translate(51px, 10px) !important;
+  width: 4.25rem !important;
+}
+body div.wrap div.root nav a:nth-child(3).active ~ hr {
+  -webkit-transform: translate(51px, 10px);
+  -moz-transform: translate(51px, 10px);
+  -ms-transform: translate(51px, 10px);
+  transform: translate(51px, 10px);
+  width: 4.25rem;
+}
+body div.wrap div.root nav a:nth-child(4):hover ~ hr {
+  -webkit-transform: translate(130px, 10px) !important;
+  -moz-transform: translate(130px, 10px) !important;
+  -ms-transform: translate(130px, 10px) !important;
+  transform: translate(130px, 10px) !important;
+  width: 3.5rem !important;
+}
+body div.wrap div.root nav a:nth-child(4).active ~ hr {
+  -webkit-transform: translate(130px, 10px);
+  -moz-transform: translate(130px, 10px);
+  -ms-transform: translate(130px, 10px);
+  transform: translate(130px, 10px);
+  width: 3.5rem;
+}
 body div.wrap div.root nav hr {
   width: 50px;
   position: absolute;
   border: 1px solid white;
-  -webkit-transform: translate(-139px, 10px);
-  -moz-transform: translate(-139px, 10px);
-  -ms-transform: translate(-139px, 10px);
-  transform: translate(-139px, 10px);
+  -webkit-transform: translate(-123px, 10px);
+  -moz-transform: translate(-123px, 10px);
+  -ms-transform: translate(-123px, 10px);
+  transform: translate(-123px, 10px);
   user-select: none;
   z-index: -1;
   transition: 0.5s ease-in-out;

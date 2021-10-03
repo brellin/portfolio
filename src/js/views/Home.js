@@ -7,7 +7,7 @@ const imgStr = imgObj => `<img src="../../assets/images/${ imgObj.src }" title="
 export default class extends ViewImpl {
     constructor() {
         super();
-        setTimeout(_ => document.querySelector('.intro').classList.remove('not-loaded'), 2500);
+        setTimeout(_ => document.querySelector('.intro').classList.remove('not-loaded'), 100);
     }
 
     getHtml() {

@@ -11,7 +11,7 @@
     "router-vanilla": "^1.1.0"
   },
   "scripts": {
-    "build": "cd src/js && mkdir classes && cp -r ../../node_modules/router-vanilla/*.js classes/",
+    "build": "cd src/js && mkdir classes && cp -fr ../../node_modules/router-vanilla/*.js classes/",
     "start": "node server.js"
   },
   "devDependencies": {

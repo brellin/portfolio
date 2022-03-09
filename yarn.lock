@@ -779,9 +779,9 @@ once@^1.3.1, once@^1.4.0:
     wrappy "1"
 
 open@^8.2.1:
-  version "8.2.1"
-  resolved "https://registry.yarnpkg.com/open/-/open-8.2.1.tgz#82de42da0ccbf429bc12d099dad2e0975e14e8af"
-  integrity sha512-rXILpcQlkF/QuFez2BJDf3GsqpjGKbkUUToAIGo9A0Q6ZkoSGogZJulrUdwRkrAsoQvoZsrjCYt8+zblOk7JQQ==
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/open/-/open-8.3.0.tgz#fdef1cdfe405e60dec8ebd18889e7e812f39c59f"
+  integrity sha512-7INcPWb1UcOwSQxAXTnBJ+FxVV4MPs/X++FWWBtgY69/J5lc+tCteMt/oFK1MnkyHC4VILLa9ntmwKTwDR4Q9w==
   dependencies:
     define-lazy-prop "^2.0.0"
     is-docker "^2.1.1"
@@ -909,9 +909,9 @@ responselike@^1.0.2:
     lowercase-keys "^1.0.0"
 
 router-vanilla@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/router-vanilla/-/router-vanilla-1.1.0.tgz#c8f826d643294f23f0a80fac35f9638c3b43306f"
-  integrity sha512-lB+qHHAosAatkl1o0MFHx4ml82/LXDbXhIZVr/phXIKIZM4ZafdTAui61HFV4yPPvVJBXGEEUS/p5lQKJ4PLRQ==
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/router-vanilla/-/router-vanilla-1.3.4.tgz#a7033cb713f003351204ce05035c0582b057ecd9"
+  integrity sha512-bqkV8J4hdtX0gcTrs8o5qgznhUndgjMOKNqEf9iy621b3LTviGmO3P28KhjbfwRVnSOuj6nsuSMD0jSwzMrPsQ==
 
 safe-buffer@5.1.2:
   version "5.1.2"

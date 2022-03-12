@@ -1,0 +1,58 @@
+@import './variables.scss';
+
+// general
+body {
+    margin: 0;
+    padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+    background-color: $light;
+    font-family: $body-font;
+    color: $dark;
+	overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+html {
+	font-size: 62.7%;
+}
+
+div {
+  margin: 0;
+  padding: 0;
+}
+
+// slide transition
+.slide-enter-active {
+	position: absolute; 
+	transition: 1s ease;
+	left: 100%;
+}
+
+.slide-enter {
+	position: absolute; 
+	transition: 1s ease;
+}
+
+.slide-enter-to {
+	position: absolute; 
+	left: 5%;
+
+	@media (max-width: 800px) {
+		top: 0;
+	}
+	
+}
+
+.slide-leave-active {
+  transition: 1s ease;
+}
+
+.slide-leave {
+	transform: scale(1);
+	opacity: 1;
+}
+
+.slide-leave-to {
+	transform: scale(.5);
+	opacity: 0;
+}

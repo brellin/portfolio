@@ -27,17 +27,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$home: -129px;
+$home: -122px;
 $about: -36px;
-$work: 54px;
-$blog: 135px;
+$work: 51px;
+$blog: 130px;
 
 nav {
   @include flex(row, center, center);
   width: 100%;
   min-height: 50px;
   height: 10%;
-  position: fixed;
   background: linear-gradient($mid 90%, 95%, transparent 100%);
   z-index: 5;
 
@@ -55,46 +54,48 @@ nav {
 
     &.home {
       &:hover ~ hr {
-        @include transform(translate($home, 15px) !important);
-        width: 5rem !important;
+        @include transform(translate($home, 10px) !important);
+        width: 4.5rem !important;
       }
 
       &.active ~ hr {
-        @include transform(translate($home, 15px));
+        @include transform(translate($home, 10px));
+        width: 4.5rem;
       }
     }
 
     &.about {
       &:hover ~ hr {
-        @include transform(translate($about, 15px) !important);
+        @include transform(translate($about, 10px) !important);
         width: 5rem !important;
       }
 
       &.active ~ hr {
-        @include transform(translate($about, 15px));
+        @include transform(translate($about, 10px));
+        width: 5rem;
       }
     }
 
     &.work {
       &:hover ~ hr {
-        @include transform(translate($work, 15px) !important);
+        @include transform(translate($work, 10px) !important);
         width: 4.25rem !important;
       }
 
       &.active ~ hr {
-        @include transform(translate($work, 15px));
+        @include transform(translate($work, 10px));
         width: 4.25rem;
       }
     }
 
     &.blog {
       &:hover ~ hr {
-        @include transform(translate($blog, 15px) !important);
+        @include transform(translate($blog, 10px) !important);
         width: 3.5rem !important;
       }
 
       &.active ~ hr {
-        @include transform(translate($blog, 15px));
+        @include transform(translate($blog, 10px));
         width: 3.5rem;
       }
     }
@@ -104,7 +105,7 @@ nav {
     width: 50px;
     position: absolute;
     border: 1px solid white;
-    @include transform(translate(-139px, 15px));
+    @include transform(translate(-139px, 10px));
     user-select: none;
     z-index: -1;
     transition: 0.5s ease-in-out;

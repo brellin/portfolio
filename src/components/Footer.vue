@@ -1,6 +1,26 @@
 <template>
   <footer>
-    <h1>Footer</h1>
+    <h2>Get in touch</h2>
+
+    <a
+      href="https://github.com/brellin"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <font-awesome-icon :icon="['fab', 'github']" />
+    </a>
+
+    <a
+      href="https://linkedin.com/in/brellin"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <font-awesome-icon :icon="['fab', 'linkedin']" />
+    </a>
+
+    <a href="mailto: william.c.umstead@gmail.com">
+      <font-awesome-icon icon="at" />
+    </a>
   </footer>
 </template>
 
@@ -12,10 +32,9 @@ export default {
 
 <style lang="scss" scoped>
 footer {
-  @include flex($justify: space-around);
-  flex-wrap: wrap;
+  @include flex($justify: space-around, $wrap: wrap);
   width: 50%;
-  margin: 0 auto 20px;
+  justify-self: flex-end;
   transition: 1s ease-out;
 
   &.invisible {
@@ -32,18 +51,14 @@ footer {
     text-align: center;
   }
 
-  div {
-    @include flex($direction: column, $align: center);
+  a {
+    font-size: 5rem;
+    cursor: pointer;
+    color: $mid;
     transition: 0.3s ease-out;
 
     &:hover {
       @include transform(scale(1.2));
-    }
-
-    svg.Link {
-      font-size: 5rem;
-      cursor: pointer;
-      color: $mid;
     }
   }
 }

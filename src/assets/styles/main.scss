@@ -35,7 +35,8 @@ div {
 
 .slide-enter-to {
 	position: absolute; 
-	left: 5%;
+	left: 0;
+	top: 50px;
 
 	@media (max-width: 800px) {
 		top: 0;

@@ -1,10 +1,11 @@
 <template>
   <div class="wrap">
     <Header :isOpen="isOpen" :toggleIsOpen="toggleIsOpen" />
+
     <router-view v-slot="{ Component, route }">
       <transition-group name="slide">
         <div
-          class="Routes"
+          class="routes"
           @click="if (isOpen) isOpen = false;"
           :key="route.path"
         >
@@ -12,16 +13,20 @@
         </div>
       </transition-group>
     </router-view>
+
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   name: "App",
   components: {
     Header,
+    Footer,
   },
   methods: {
     toggleIsOpen: function () {
@@ -38,20 +43,19 @@ export default {
 
 <style lang="scss">
 div.wrap {
-  width: 100%;
   @include flex(column, flex-start, center);
+  width: 100%;
+  min-height: 100vh;
 
-  div.Routes {
-    margin: 75px auto 0;
-    min-height: 65vh;
-    width: 90%;
+  div.routes {
+    padding: 50px 5%;
+    width: 100%;
+    min-height: calc(100vh - 180px);
+    box-sizing: border-box;
 
     main {
       width: 100%;
       box-sizing: border-box;
-      @include flex(column, flex-start, center);
-      padding: 15px;
-      margin: 35px auto 25px;
     }
   }
 }

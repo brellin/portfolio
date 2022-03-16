@@ -1,14 +1,17 @@
-import hooks from './hooks.png'
-import redux from './redux.png'
-import node from './node.png'
-import python from './python.png'
-import me from './will.jpg'
-import js from './js.png'
-import mdb from './mdb.png'
-import gql from './gql.png'
-import php from './php.png'
-import sass from './sass.svg'
-import sql from './sql.png'
+import hooks from './hooks.png';
+import redux from './redux.png';
+import node from './node.png';
+import python from './python.png';
+import me from './will.jpg';
+import js from './js.png';
+import mdb from './mdb.png';
+import gql from './gql.png';
+import php from './php.png';
+import sass from './sass.svg';
+import sql from './sql.png';
+import gg from './gg.png';
+import cf from './chao.png';
+import bh from './blackhole.png';
 
 export {
     hooks,
@@ -21,5 +24,8 @@ export {
     gql,
     php,
     sass,
-    sql
-}
+    sql,
+    gg,
+    cf,
+    bh
+};

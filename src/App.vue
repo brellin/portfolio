@@ -56,6 +56,11 @@ div.wrap {
     main {
       width: 100%;
       box-sizing: border-box;
+
+      h1 {
+        font-size: 4rem;
+        font-family: $header-font;
+      }
     }
   }
 }

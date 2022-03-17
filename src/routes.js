@@ -3,6 +3,7 @@ import Home from './views/Home.vue';
 import About from './views/About.vue';
 import Work from './views/Work.vue';
 import Blog from './views/Blog.vue';
+import PostPage from './views/PostPage.vue';
 
 const titlify = pageName => `Will Umstead - ${ pageName }`;
 
@@ -35,6 +36,10 @@ const routes = [
             title: titlify('Blog')
         }
     },
+    {
+        path: '/blog/post/:id',
+        component: PostPage
+    }
 ];
 
 const router = createRouter({

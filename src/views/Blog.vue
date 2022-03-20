@@ -1,9 +1,7 @@
 <template>
   <main>
-    <h1>Blog</h1>
-
     <div :class="`post-wall ${posts.length === 0 ? 'pulse' : ''}`">
-      <Post v-for="p in posts" :key="p.id" v-bind="p" />
+      <Post v-for="p in posts" :key="p.id" v-bind="p" :loading="loading" />
     </div>
   </main>
 </template>
@@ -15,7 +13,8 @@ export default {
   name: "wu-blog",
   data() {
     return {
-      posts: [],
+      posts: [{}, {}, {}],
+      loading: true,
     };
   },
   mounted() {
@@ -23,6 +22,7 @@ export default {
       .get("/posts")
       .then(({ data }) => {
         this.posts = data;
+        this.loading = false;
       })
       .catch((err) => console.error(err));
   },

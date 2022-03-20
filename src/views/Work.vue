@@ -1,6 +1,5 @@
 <template>
   <main>
-    <h1>Work</h1>
     <Project class="project" v-for="p in projects" :key="p.title" v-bind="p" />
   </main>
 </template>

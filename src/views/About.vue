@@ -1,7 +1,5 @@
 <template>
   <main>
-    <h1>About</h1>
-
     <img src="../assets/images/will.jpg" alt="Will Umstead" />
 
     <p>
@@ -60,6 +58,7 @@ main {
     font-size: 2rem;
     background: $text-bg;
     box-shadow: 0 0 250px 15px $text-bg;
+    padding: 25px;
 
     a {
       color: $mid;

@@ -9,9 +9,14 @@
     <router-link to="/work" class="work" @click="toggleIsOpen"
       >Work</router-link
     >
-    <router-link to="/blog" class="blog" @click="toggleIsOpen"
-      >Blog</router-link
-    >
+    <router-link
+      to="/blog"
+      :class="`blog${
+        this.$route.fullPath.match(/\/blog\/post\/\d/i) ? ' active' : ''
+      }`"
+      @click="toggleIsOpen"
+      >Blog {{
+    }}</router-link>
     <hr />
   </nav>
 </template>
@@ -39,6 +44,8 @@ nav {
   height: 10%;
   background: linear-gradient($mid 90%, 95%, transparent 100%);
   z-index: 5;
+  position: sticky;
+  top: 0;
 
   @media (max-width: 500px) {
     width: 100%;

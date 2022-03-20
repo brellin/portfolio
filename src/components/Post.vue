@@ -1,5 +1,5 @@
 <template>
-  <div class="post" @click="() => goToPost(id)">
+  <div :class="`post${loading ? ' loading' : ''}`" @click="() => goToPost(id)">
     <h2>{{ title }}</h2>
     <span>{{ editedString(date, edited) }}</span>
   </div>
@@ -27,6 +27,7 @@ export default {
 
 <style lang='scss'>
 div.post {
+  @include flex(column, center, center);
   width: calc(100% - 60px);
   border: 1px solid $dark;
   border-radius: 25px;
@@ -54,6 +55,7 @@ div.post {
     animation: shine ease-in-out 3s infinite;
     background: linear-gradient(to right, $text-bg 25%, $mid, $text-bg 75%);
     background-size: 400%;
+    pointer-events: none;
 
     h2 {
       background: $dark;

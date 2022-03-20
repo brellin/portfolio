@@ -34,11 +34,20 @@ const routes = [
         component: Blog,
         meta: {
             title: titlify('Blog')
-        }
+        },
     },
     {
         path: '/blog/post/:id',
-        component: PostPage
+        component: PostPage,
+        meta: {
+            title: titlify('Blog Post')
+        },
+        children: [
+            {
+                path: 'edit',
+                component: PostPage
+            }
+        ]
     }
 ];
 

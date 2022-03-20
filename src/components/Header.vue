@@ -12,12 +12,14 @@
     <router-link
       to="/blog"
       :class="`blog${
-        this.$route.fullPath.match(/\/blog\/post\/\d/i) ? ' active' : ''
+        this.$route.fullPath.match(/\/blog\/post\/(\d|new)(\/edit)?/i)
+          ? ' active'
+          : ''
       }`"
       @click="toggleIsOpen"
       >Blog {{
     }}</router-link>
-    <hr />
+    <hr id="indicator" />
   </nav>
 </template>
 

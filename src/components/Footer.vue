@@ -7,6 +7,7 @@
         href="https://github.com/brellin"
         target="_blank"
         rel="noopener noreferrer"
+        title="GitHub"
       >
         <font-awesome-icon :icon="['fab', 'github']" />
       </a>
@@ -15,11 +16,12 @@
         href="https://linkedin.com/in/brellin"
         target="_blank"
         rel="noopener noreferrer"
+        title="LinkedIn"
       >
         <font-awesome-icon :icon="['fab', 'linkedin']" />
       </a>
 
-      <a href="mailto: william.c.umstead@gmail.com">
+      <a href="mailto: william.c.umstead@gmail.com" title="Email">
         <font-awesome-icon icon="at" />
       </a>
     </div>

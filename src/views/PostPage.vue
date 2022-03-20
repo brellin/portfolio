@@ -1,20 +1,14 @@
 <template>
   <main v-if="!loading">
-    <Modal v-if="edit" />
-    <button @click="goBack">Back</button>
-    <h2>{{ post.title }}</h2>
-    <span>{{
-      editedString(post.date, edit ? Date.now().toString() : post.edited)
-    }}</span>
-    <p v-if="!edit">{{ post.text }}</p>
-    <textarea
-      v-else
-      :placeholder="post.text"
-      :value="post.text"
-      @change="handleChange"
-      name="text"
-    />
-    <button v-if="edit" @click="submitPost">Submit</button>
+    <Modal v-if="auth" />
+    <button v-if="ending !== 'edit'" @click="goBack">Back</button>
+    <button v-else @click="deletePost">X</button>
+    <h2 v-if="!auth">{{ post.title }}</h2>
+    <input v-else :value="post.title" type="text" />
+    <span>{{ editedString(post.date, newPost ? null : post.edited) }}</span>
+    <p v-if="!auth">{{ post.text }}</p>
+    <textarea v-else :value="post.text" @change="handleChange" name="text" />
+    <button v-if="auth" @click="submitPost">Submit</button>
   </main>
 </template>
 
@@ -35,7 +29,6 @@ export default {
     },
     submitPost() {
       axios
-
         .put(`/posts/${this.post.id}`, this.post)
         .then((r) => {
           console.log(r);
@@ -48,22 +41,47 @@ export default {
       this.post[e.target.name] = e.target.value;
       console.log(this.post[e.target.name]);
     },
+    deletePost() {
+      window.confirm(`Do you really want to delete ${this.post.title}?`)
+        ? axios
+            .delete(`/posts/${this.post.id}`)
+            .then(() => this.$router.push("/blog"))
+            .catch((err) => console.error(err))
+        : alert("You have chosen not to delete the post.");
+    },
   },
   data() {
     return {
-      post: undefined,
+      post: {
+        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda architecto, voluptatem hic enim atque explicabo praesentium sequi aspernatur voluptas aliquam nulla sed ut distinctio perspiciatis asperiores odio, aliquid voluptate repellat.",
+        date: Date.now().toString(),
+        edited: Date.now().toString(),
+        title: "Title",
+      },
       loading: true,
-      edit: this.$route.path.split("/").pop() === "edit",
     };
   },
   mounted() {
-    axios
-      .get(`/posts/${this.$route.params.id}`)
-      .then(({ data }) => {
-        this.post = data;
-        this.loading = false;
-      })
-      .catch((err) => console.error(err));
+    if (this.ending !== "new")
+      axios
+        .get(`/posts/${this.$route.params.id}`)
+        .then(({ data }) => {
+          this.post = data;
+          this.loading = false;
+        })
+        .catch((err) => console.error(err));
+    else this.loading = false;
+  },
+  computed: {
+    ending() {
+      return this.$route.path.split("/").pop();
+    },
+    auth() {
+      return /new|edit/i.test(this.ending);
+    },
+    newPost() {
+      return this.ending === "new";
+    },
   },
 };
 </script>
@@ -116,29 +134,6 @@ main {
   button {
     @include button(3rem);
     margin-top: 5px;
-  }
-}
-
-div.restricted {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  backdrop-filter: blur(5px);
-  background-color: #00000055;
-  @include flex(row, center, center);
-
-  div.Verification {
-    width: 50%;
-    height: 50%;
-    @include flex(row, center, center);
-
-    button {
-      @include button(5rem);
-      font-weight: bold;
-    }
   }
 }
 </style>

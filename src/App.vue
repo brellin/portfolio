@@ -21,6 +21,7 @@
 <script>
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
+import { login } from "./assets/functions";
 
 export default {
   name: "App",
@@ -37,6 +38,13 @@ export default {
     return {
       isOpen: false,
     };
+  },
+  beforeMount() {
+    const proof = sessionStorage.getItem("proof");
+    if (proof) login(JSON.parse(proof));
+  },
+  beforeUnmount() {
+    sessionStorage.removeItem("proof");
   },
 };
 </script>

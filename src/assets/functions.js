@@ -29,7 +29,7 @@ function getProof() {
 const login = proof => {
     axios.defaults.headers = proof;
     axios.post('/auth')
-        .then(res => res.status === (200 || 204) && store.commit('login'))
+        .then(res => res.status === (200 || 204) && store.commit('login', proof))
         .catch(err => {
             console.error(err);
             alert('Nice try, but you are not me.');
@@ -54,6 +54,7 @@ const editedString = (created, edited) => `Created ${ momentize(created) }${ edi
 export {
     getProof,
     readFile,
+    login,
     momentize,
     editedString
 };

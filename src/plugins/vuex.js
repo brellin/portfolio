@@ -5,10 +5,12 @@ const store = createStore({
         isWill: false
     },
     mutations: {
-        login(state) {
+        login(state, proof) {
             state.isWill = true;
+            sessionStorage.setItem('proof', JSON.stringify(proof));
         }
-    }
+    },
+
 });
 
 export default store;

@@ -41,7 +41,6 @@ footer {
   justify-self: flex-end;
   transition: 1s ease-out;
   border: 2px solid $mid;
-  margin-bottom: 50px;
 
   &.invisible {
     opacity: 0;

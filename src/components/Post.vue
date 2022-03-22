@@ -1,7 +1,7 @@
 <template>
   <div :class="`post${loading ? ' loading' : ''}`" @click="() => goToPost(id)">
     <h2>{{ title }}</h2>
-    <span>{{ editedString(date, edited) }}</span>
+    <span>{{ date && editedString(date, edited) }}</span>
   </div>
 </template>
 

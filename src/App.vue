@@ -48,9 +48,6 @@ div.wrap {
     box-sizing: border-box;
     margin-bottom: 5rem;
 
-    @media (max-width: 500px) {
-    }
-
     main {
       width: 100%;
       box-sizing: border-box;

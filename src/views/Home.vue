@@ -71,7 +71,6 @@ main {
     width: max-content;
 
     @media (max-width: 500px) {
-      margin-top: 50px;
       width: 100%;
     }
 

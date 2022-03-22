@@ -36,6 +36,10 @@ export default {
 main {
   @include flex(column, flex-start, center);
 
+  @media (max-width: 500px) {
+    margin-top: -25px;
+  }
+
   h1 {
     font-size: 8rem;
   }

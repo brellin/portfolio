@@ -41,6 +41,7 @@ footer {
   justify-self: flex-end;
   transition: 1s ease-out;
   border: 2px solid $mid;
+  padding-bottom: 5px;
 
   &.invisible {
     opacity: 0;
@@ -49,6 +50,8 @@ footer {
 
   @media (max-width: 500px) {
     width: 100%;
+    border: none;
+    border-top: 2px solid $mid;
   }
 
   h2 {

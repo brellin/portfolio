@@ -5,7 +5,9 @@
 
       <h1>William Charles Umstead Junior</h1>
 
-      <h3 class="bottom" :style="bottom">Full Stack Web Developer</h3>
+      <h3 class="bottom" :style="bottom">
+        Full Stack Web Developer and Writer
+      </h3>
     </div>
 
     <div class="skills">
@@ -65,11 +67,12 @@ main {
   }
 
   div.intro {
-    @include flex($direction: column);
+    @include flex($direction: column, $justify: center);
     width: max-content;
 
     @media (max-width: 500px) {
       margin-top: 50px;
+      width: 100%;
     }
 
     h1 {
@@ -79,7 +82,7 @@ main {
       margin: 0;
 
       @media (max-width: 670px) {
-        font-size: 20px;
+        font-size: 2rem;
       }
     }
 

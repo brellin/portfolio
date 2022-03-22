@@ -4,11 +4,7 @@
 
     <router-view v-slot="{ Component, route }">
       <transition-group name="slide">
-        <div
-          class="routes"
-          @click="if (isOpen) isOpen = false;"
-          :key="route.path"
-        >
+        <div class="routes" :key="route.path">
           <component :is="Component" />
         </div>
       </transition-group>
@@ -29,16 +25,6 @@ export default {
     Header,
     Footer,
   },
-  methods: {
-    toggleIsOpen: function () {
-      this.isOpen = !this.isOpen;
-    },
-  },
-  data() {
-    return {
-      isOpen: false,
-    };
-  },
   beforeMount() {
     const proof = sessionStorage.getItem("proof");
     if (proof) login(JSON.parse(proof));
@@ -53,13 +39,17 @@ export default {
 div.wrap {
   @include flex(column, flex-start, center);
   width: 100%;
-  min-height: 100vh;
+  padding: 0;
+  margin: 0;
 
   div.routes {
-    padding: 50px 5%;
+    padding: 50px 5% 0;
     width: 100%;
-    min-height: calc(100vh - 180px);
     box-sizing: border-box;
+    margin-bottom: 5rem;
+
+    @media (max-width: 500px) {
+    }
 
     main {
       width: 100%;

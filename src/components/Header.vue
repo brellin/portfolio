@@ -1,14 +1,8 @@
 <template>
   <nav>
-    <router-link exact to="/" class="home" @click="toggleIsOpen"
-      >Home</router-link
-    >
-    <router-link to="/about" class="about" @click="toggleIsOpen"
-      >About</router-link
-    >
-    <router-link to="/work" class="work" @click="toggleIsOpen"
-      >Work</router-link
-    >
+    <router-link exact to="/" class="home">Home</router-link>
+    <router-link to="/about" class="about">About</router-link>
+    <router-link to="/work" class="work">Work</router-link>
     <router-link
       to="/blog"
       :class="`blog${
@@ -16,7 +10,6 @@
           ? ' active'
           : ''
       }`"
-      @click="toggleIsOpen"
       >Blog {{
     }}</router-link>
     <hr id="indicator" />
@@ -26,10 +19,6 @@
 <script>
 export default {
   name: "global-header",
-  props: {
-    isOpen: Boolean,
-    toggleIsOpen: Function,
-  },
 };
 </script>
 

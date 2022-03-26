@@ -28,14 +28,23 @@ export default {
       this.$router.push("/blog");
     },
     submitPost() {
-      axios
-        .put(`/posts/${this.post.id}`, this.post)
-        .then((r) => {
-          console.log(r);
-          this.$router.push(`/blog/post/${this.post.id}`);
-        })
+      this.newPost
+        ? axios
+            .post("/posts/new", this.post)
+            .then((r) => {
+              console.log(r);
+              this.$router.push(`/blog/post/${r.data.id}`);
+            })
 
-        .catch((err) => console.error(err));
+            .catch((err) => console.error(err))
+        : axios
+            .put(`/posts/${this.post.id}`, this.post)
+            .then((r) => {
+              console.log(r);
+              this.$router.push(`/blog/post/${this.post.id}`);
+            })
+
+            .catch((err) => console.error(err));
     },
     handleChange(e) {
       this.post[e.target.name] = e.target.value;
@@ -93,6 +102,7 @@ main {
   @include flex(column, center, center, wrap);
   background: $text-bg;
   box-shadow: 0 0 250px 15px $text-bg;
+  box-sizing: border-box;
 
   button {
     @include button;
@@ -128,7 +138,7 @@ main {
     height: 200px;
     resize: none;
     border-radius: 5px;
-    padding: 0;
+    padding: 0 15px;
   }
 
   button {

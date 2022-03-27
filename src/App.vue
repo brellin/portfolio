@@ -56,6 +56,7 @@ div.wrap {
   width: 100%;
   padding: 0;
   margin: 0;
+  background: $light;
 
   button.burger {
     @media (min-width: 500px) {
@@ -86,7 +87,7 @@ div.wrap {
     background-position: 50%;
     background-color: $dark;
     position: fixed;
-    top: 15px;
+    top: 12.5px;
     left: 15px;
     border: none;
     transition: 0.3s ease;

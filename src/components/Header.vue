@@ -61,16 +61,16 @@ nav {
 
   @media (max-width: 500px) {
     @include flex(column, center, center);
-    position: fixed;
-    left: -100%;
     background: none;
-    height: auto;
-    transition: 0.3s ease-out;
+    height: max-content;
+    position: fixed;
     top: 75px;
+    left: 0;
+    width: 50vw;
 
-    &.open {
-      left: 0;
-      width: 50vw;
+    &.open a,
+    &.open button {
+      transform: translateX(0);
     }
   }
 
@@ -81,12 +81,20 @@ nav {
     padding: 5px 15px;
     margin: 0 5px;
     outline: none;
-    box-sizing: border-box;
+    transition: 0.3s ease-out;
+
+    @for $i from 1 to 6 {
+      &:nth-child(#{$i}) {
+        transition-duration: #{"." + ($i + 3) + "s"};
+      }
+    }
 
     @media (max-width: 500px) {
-      background: $mid;
+      @include transform(translateX(-50vw));
+      background-color: $mid;
       width: 100%;
       text-align: center;
+      box-sizing: border-box;
     }
 
     &.home {
@@ -165,11 +173,16 @@ nav {
     background-position: center;
 
     @media (max-width: 500px) {
-      position: relative;
+      border-radius: 0;
+      text-align: center;
       width: 100%;
+      position: initial;
       right: auto;
       top: auto;
       background-color: $mid;
+      transform: translateX(-100%);
+      box-sizing: border-box;
+      transition: 0.4s ease-out;
     }
   }
 }

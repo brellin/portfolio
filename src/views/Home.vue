@@ -70,7 +70,7 @@ main {
     @include flex($direction: column, $justify: center);
     width: max-content;
 
-    @media (max-width: 500px) {
+    @media (max-width: 800px) {
       width: 100%;
     }
 
@@ -102,6 +102,7 @@ main {
       &.bottom {
         border-top: 1px solid #001a1a;
         align-self: flex-end;
+        text-align: right;
       }
     }
   }

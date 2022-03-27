@@ -37,29 +37,19 @@ export default {
 <style lang="scss" scoped>
 footer {
   @include flex(column, center, center);
-  width: 50%;
+  width: 100%;
   justify-self: flex-end;
   transition: 1s ease-out;
-  border: 2px solid $mid;
   padding-bottom: 5px;
-
-  &.invisible {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-
-  @media (max-width: 500px) {
-    width: 100%;
-    border: none;
-    border-top: 2px solid $mid;
-  }
+  background: $mid;
+  box-sizing: border-box;
 
   h2 {
     margin-top: -2rem;
     margin-bottom: 2rem;
     text-align: center;
     font-size: 3rem;
-    background-color: $light;
+    background-color: none;
   }
 
   div.links {
@@ -69,7 +59,7 @@ footer {
     a {
       font-size: 5rem;
       cursor: pointer;
-      color: $mid;
+      color: $light;
       transition: 0.3s ease-out;
 
       &:hover {

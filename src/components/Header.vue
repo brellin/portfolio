@@ -67,10 +67,16 @@ nav {
     top: 75px;
     left: 0;
     width: 50vw;
+    transform: translateX(-50vw);
+    transition: 1s ease-out;
 
-    &.open a,
-    &.open button {
+    &.open {
       transform: translateX(0);
+
+      a,
+      button {
+        transform: translateX(0);
+      }
     }
   }
 

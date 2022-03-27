@@ -131,7 +131,7 @@ main {
   box-shadow: 0 0 250px 15px $text-bg;
 
   button {
-    @include button;
+    @include button();
     align-self: flex-start;
     margin-top: -35px;
     margin-bottom: 35px;

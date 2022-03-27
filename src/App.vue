@@ -1,6 +1,6 @@
 <template>
   <div class="wrap">
-    <Header :open="open" />
+    <Header :open="open" :toggleOpen="toggleOpen" />
 
     <button class="burger" @click="toggleOpen"></button>
 
@@ -101,6 +101,10 @@ div.wrap {
     main {
       width: 100%;
       box-sizing: border-box;
+
+      @media (max-width: 500px) {
+        padding-top: 50px;
+      }
 
       h1 {
         font-size: 4rem;

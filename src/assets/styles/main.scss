@@ -32,7 +32,7 @@ div {
 		&-piece:start {
 			margin-top: 50px;
 		}
-		
+
 	}
 
 	&-thumb {
@@ -62,7 +62,12 @@ textarea::-webkit-scrollbar-track-piece:start {
 .slide-enter-to {
 	position: absolute; 
 	left: 0;
-	top: 50px;	
+	top: 50px;
+	
+	@media (max-width: 500px) {
+		top: 0;
+	}
+	
 }
 
 .slide-leave-active {

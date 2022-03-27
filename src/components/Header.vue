@@ -2,9 +2,13 @@
   <nav :class="open ? 'open' : ''">
     <button v-if="!isWill" @click="getProof"></button>
 
-    <router-link exact to="/" class="home">Home</router-link>
-    <router-link to="/about" class="about">About</router-link>
-    <router-link to="/work" class="work">Work</router-link>
+    <router-link exact to="/" class="home" @click="toggleOpen"
+      >Home</router-link
+    >
+    <router-link to="/about" class="about" @click="toggleOpen"
+      >About</router-link
+    >
+    <router-link to="/work" class="work" @click="toggleOpen">Work</router-link>
     <router-link
       to="/blog"
       :class="`blog${
@@ -12,6 +16,7 @@
           ? ' active'
           : ''
       }`"
+      @click="toggleOpen"
       >Blog {{
     }}</router-link>
 
@@ -57,7 +62,6 @@ nav {
   @media (max-width: 500px) {
     @include flex(column, center, center);
     position: fixed;
-    width: 100%;
     left: -100%;
     background: none;
     height: auto;
@@ -66,7 +70,7 @@ nav {
 
     &.open {
       left: 0;
-      width: 50%;
+      width: 50vw;
     }
   }
 

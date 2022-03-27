@@ -27,7 +27,7 @@ $body-font: 'Do Hyeon', sans-serif;
 	transform: $transforms;
 }
 
-@mixin button($size: 2rem) {
+@mixin button($size: 2rem, $bg: $mid, $color: $light) {
     font-size: $size;
     background: $mid;
     color: $light;

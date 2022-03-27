@@ -1,16 +1,18 @@
 <template>
   <div class="wrap">
-    <Header :isOpen="isOpen" :toggleIsOpen="toggleIsOpen" />
+    <Header :open="open" />
+
+    <button class="burger" @click="toggleOpen"></button>
 
     <router-view v-slot="{ Component, route }">
       <transition-group name="slide">
-        <div class="routes" :key="route.path">
+        <div class="routes" :key="route.path" @click="close">
           <component :is="Component" />
         </div>
       </transition-group>
     </router-view>
 
-    <Footer />
+    <Footer @click="close" />
   </div>
 </template>
 
@@ -32,6 +34,19 @@ export default {
   beforeUnmount() {
     sessionStorage.removeItem("proof");
   },
+  data() {
+    return {
+      open: false,
+    };
+  },
+  methods: {
+    toggleOpen() {
+      this.open = !this.open;
+    },
+    close() {
+      this.open = false;
+    },
+  },
 };
 </script>
 
@@ -41,6 +56,41 @@ div.wrap {
   width: 100%;
   padding: 0;
   margin: 0;
+
+  button.burger {
+    @media (min-width: 500px) {
+      display: none;
+    }
+
+    width: 50px;
+    height: 50px;
+    background-image: linear-gradient(
+      transparent 24%,
+      $mid 27%,
+      $mid 37%,
+      transparent 40%,
+      transparent 44%,
+      $mid 47%,
+      $mid 57%,
+      transparent 60%,
+      transparent 64%,
+      $mid 67%,
+      $mid 77%,
+      transparent 80%
+    );
+    cursor: pointer;
+    z-index: 5;
+    border-radius: 2.5px;
+    background-size: 30px 50px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-color: $dark;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    border: none;
+    transition: 0.3s ease;
+  }
 
   div.routes {
     padding: 50px 5% 0;

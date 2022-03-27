@@ -1,13 +1,34 @@
 <template>
   <main v-if="!loading">
     <Modal v-if="auth" />
-    <button v-if="ending !== 'edit'" @click="goBack">Back</button>
-    <button v-else @click="deletePost">X</button>
+
+    <div class="buttons">
+      <button v-if="ending === 'edit'" @click="deletePost">X</button>
+      <button v-else @click="goBack">Back</button>
+      <button v-if="!auth && isWill" @click="editPost">Edit</button>
+    </div>
+
     <h2 v-if="!auth">{{ post.title }}</h2>
-    <input v-else :value="post.title" type="text" />
+    <input
+      v-else
+      name="title"
+      :value="post.title"
+      placeholder="Title"
+      type="text"
+      @change="handleChange"
+    />
+
     <span>{{ editedString(post.date, newPost ? null : post.edited) }}</span>
+
     <p v-if="!auth">{{ post.text }}</p>
-    <textarea v-else :value="post.text" @change="handleChange" name="text" />
+    <textarea
+      v-else
+      :value="post.text"
+      placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, iste. Dignissimos perferendis iusto molestias totam animi beatae odio aliquam ut minima nulla, doloribus quae natus fuga, voluptatibus illo! Cupiditate, commodi."
+      @change="handleChange"
+      name="text"
+    />
+
     <button v-if="auth" @click="submitPost">Submit</button>
   </main>
 </template>
@@ -26,6 +47,9 @@ export default {
     momentize,
     goBack() {
       this.$router.push("/blog");
+    },
+    editPost() {
+      this.$router.push(`${this.$route.path}/edit`);
     },
     submitPost() {
       this.newPost
@@ -62,10 +86,10 @@ export default {
   data() {
     return {
       post: {
-        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda architecto, voluptatem hic enim atque explicabo praesentium sequi aspernatur voluptas aliquam nulla sed ut distinctio perspiciatis asperiores odio, aliquid voluptate repellat.",
+        text: "",
         date: Date.now().toString(),
         edited: Date.now().toString(),
-        title: "Title",
+        title: "",
       },
       loading: true,
     };
@@ -91,6 +115,9 @@ export default {
     newPost() {
       return this.ending === "new";
     },
+    isWill() {
+      return this.$store.state.isWill;
+    },
   },
 };
 </script>
@@ -102,13 +129,17 @@ main {
   @include flex(column, center, center, wrap);
   background: $text-bg;
   box-shadow: 0 0 250px 15px $text-bg;
-  box-sizing: border-box;
 
   button {
     @include button;
     align-self: flex-start;
     margin-top: -35px;
     margin-bottom: 35px;
+  }
+
+  div.buttons {
+    @include flex($justify: space-between);
+    width: 100%;
   }
 
   h2 {
@@ -125,19 +156,23 @@ main {
     font-size: 2rem;
     white-space: pre-line;
   }
-  input {
+
+  input,
+  textarea {
     width: 100%;
-    font-size: 4rem;
+    box-sizing: border-box;
     border-radius: 5px;
+  }
+
+  input {
+    font-size: 4rem;
     padding: 0;
     text-align: center;
   }
 
   textarea {
-    width: 100%;
-    height: 200px;
+    min-height: 200px;
     resize: none;
-    border-radius: 5px;
     padding: 0 15px;
   }
 

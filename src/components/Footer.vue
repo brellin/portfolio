@@ -41,7 +41,7 @@ footer {
   justify-self: flex-end;
   transition: 1s ease-out;
   padding-bottom: 5px;
-  background: $mid;
+  background: linear-gradient(transparent 0%, $mid 5%, $mid 100%);
   box-sizing: border-box;
 
   h2 {

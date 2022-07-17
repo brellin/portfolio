@@ -187,6 +187,18 @@ nav {
     position: absolute;
     right: 5px;
     top: 7.5px;
+
+    @media (max-width: 500px) {
+      text-align: center;
+      width: 100%;
+      position: initial;
+      right: auto;
+      top: auto;
+      background-color: $mid;
+      // transform: translateX(-100%);
+      box-sizing: border-box;
+      transition: 0.4s ease-out;
+    }
   }
 }
 </style>

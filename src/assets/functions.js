@@ -29,7 +29,13 @@ function getProof() {
 const login = proof => {
     axios.defaults.headers = proof;
     axios.post('/auth')
-        .then(res => res.status === (200 || 204) && store.commit('login', proof))
+        .then(res => {
+            if (res.status === (200 || 204)) {
+                store.commit('login', proof);
+                axios.get('posts/categories')
+                    .then(({ data }) => store.commit('populateCategories', data));
+            }
+        })
         .catch(err => {
             console.error(err);
             alert('Nice try, but you are not me.');

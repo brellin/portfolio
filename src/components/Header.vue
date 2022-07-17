@@ -1,24 +1,15 @@
 <template>
   <nav :class="open ? 'open' : ''">
     <button v-if="!isWill" @click="getProof"></button>
+    <router-link v-else to="/blog/post/new" class="will">Welcome, Will</router-link>
 
-    <router-link exact to="/" class="home" @click="toggleOpen"
-      >Home</router-link
-    >
-    <router-link to="/about" class="about" @click="toggleOpen"
-      >About</router-link
-    >
+    <router-link exact to="/" class="home" @click="toggleOpen">Home</router-link>
+    <router-link to="/about" class="about" @click="toggleOpen">About</router-link>
     <router-link to="/work" class="work" @click="toggleOpen">Work</router-link>
-    <router-link
-      to="/blog"
-      :class="`blog${
-        this.$route.fullPath.match(/\/blog\/post\/(\d|new)(\/edit)?/i)
-          ? ' active'
-          : ''
-      }`"
-      @click="toggleOpen"
-      >Blog {{
-    }}</router-link>
+    <router-link to="/blog" :class="`blog${ this.$route.fullPath.match(/\/blog\/post\/(\d|new)(\/edit)?/i)
+    ? ' active'
+    : ''
+    }`" @click="toggleOpen">Blog {{ }}</router-link>
 
     <hr id="indicator" />
   </nav>
@@ -104,48 +95,48 @@ nav {
     }
 
     &.home {
-      &:hover ~ hr {
+      &:hover~hr {
         @include transform(translate($home, 10px) !important);
         width: 4.5rem !important;
       }
 
-      &.active ~ hr {
+      &.active~hr {
         @include transform(translate($home, 10px));
         width: 4.5rem;
       }
     }
 
     &.about {
-      &:hover ~ hr {
+      &:hover~hr {
         @include transform(translate($about, 10px) !important);
         width: 5rem !important;
       }
 
-      &.active ~ hr {
+      &.active~hr {
         @include transform(translate($about, 10px));
         width: 5rem;
       }
     }
 
     &.work {
-      &:hover ~ hr {
+      &:hover~hr {
         @include transform(translate($work, 10px) !important);
         width: 4.25rem !important;
       }
 
-      &.active ~ hr {
+      &.active~hr {
         @include transform(translate($work, 10px));
         width: 4.25rem;
       }
     }
 
     &.blog {
-      &:hover ~ hr {
+      &:hover~hr {
         @include transform(translate($blog, 10px) !important);
         width: 3.5rem !important;
       }
 
-      &.active ~ hr {
+      &.active~hr {
         @include transform(translate($blog, 10px));
         width: 3.5rem;
       }
@@ -190,6 +181,12 @@ nav {
       box-sizing: border-box;
       transition: 0.4s ease-out;
     }
+  }
+
+  a.will {
+    position: absolute;
+    right: 5px;
+    top: 7.5px;
   }
 }
 </style>

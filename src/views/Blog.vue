@@ -4,12 +4,12 @@
       <h2>Filter</h2>
       <select @change="updateCategory">
         <option value="">all categories</option>
-        <option v-for="                        c, i                         in categories" :key="i" :value="c">{{ c }}
+        <option v-for="                         c, i                          in categories" :key="i" :value="c">{{ c }}
         </option>
       </select>
     </div>
     <div :class="`post-wall ${ posts.length === 0 ? 'pulse' : '' }`">
-      <Post v-for="                   p                    in posts" :key="p.id" v-bind="p" :loading="loading" />
+      <Post v-for="                    p                     in posts" :key="p.id" v-bind="p" :loading="loading" />
     </div>
   </main>
 </template>
@@ -22,7 +22,6 @@ export default {
   data() {
     return {
       posts: [ {}, {}, {} ],
-      categories: this.$store.state.categories,
       loading: true,
     };
   },
@@ -54,6 +53,9 @@ export default {
   components: {
     Post,
   },
+  computed: {
+    categories() { return this.$store.state.categories; }
+  }
 };
 </script>
 

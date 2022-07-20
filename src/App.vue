@@ -65,8 +65,7 @@ div.wrap {
 
     width: 50px;
     height: 50px;
-    background-image: linear-gradient(
-      transparent 24%,
+    background-image: linear-gradient(transparent 24%,
       $mid 27%,
       $mid 37%,
       transparent 40%,
@@ -77,8 +76,7 @@ div.wrap {
       transparent 64%,
       $mid 67%,
       $mid 77%,
-      transparent 80%
-    );
+      transparent 80%);
     cursor: pointer;
     z-index: 5;
     border-radius: 2.5px;

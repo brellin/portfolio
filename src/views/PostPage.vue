@@ -1,9 +1,9 @@
 <template>
   <main v-if="!loading">
     <div class="buttons">
+      <button @click="this.$router.back">Back</button>
       <button v-if="ending === 'edit'" @click="deletePost">X</button>
-      <button v-else @click="goBack">Back</button>
-      <button v-if="!auth && isWill" @click="editPost">Edit</button>
+      <button v-else @click="editPost">Edit</button>
     </div>
 
     <h2 v-if="!auth">{{ post.title }}</h2>
@@ -61,9 +61,6 @@
     methods: {
       editedString,
       momentize,
-      goBack() {
-        this.$router.push("/blog");
-      },
       editPost() {
         this.$router.push(`${this.$route.path}/edit`);
       },
@@ -151,7 +148,7 @@
   main {
     width: 100%;
     margin: 50px auto 0;
-    padding: 0 25px;
+    padding: 25px;
     box-sizing: border-box;
     @include flex(column, center, center, wrap);
     background: $text-bg;
@@ -215,6 +212,7 @@
       position: relative;
       padding: 15px 0 5px;
       margin-bottom: 15px;
+      border-radius: 5px;
 
       h3 {
         font-size: 1.75rem;

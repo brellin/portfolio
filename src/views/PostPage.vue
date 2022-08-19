@@ -1,64 +1,63 @@
 <template>
   <main v-if="!loading">
-    <Modal v-if="auth" />
-
     <div class="buttons">
       <button v-if="ending === 'edit'" @click="deletePost">X</button>
       <button v-else @click="goBack">Back</button>
       <button v-if="!auth && isWill" @click="editPost">Edit</button>
     </div>
 
-    <div class="category" v-if="auth">
-      <h3>Category</h3>
-      <input
-        list="categories"
-        type="text"
-        name="category"
-        @input="handleCat"
-        :value="post.category"
-      />
-      <datalist id="categories" name="category" @change="handleChange">
-        <option value=""></option>
-        <option v-for="(c, i) in cats" :value="c" :key="i">
-          {{ c }}
-        </option>
-      </datalist>
-    </div>
-
     <h2 v-if="!auth">{{ post.title }}</h2>
-    <input
-      v-else
-      name="title"
-      :value="post.title"
-      placeholder="Title"
-      type="text"
-      @change="handleChange"
-    />
-
     <span>{{ editedString(post.date, newPost ? null : post.edited) }}</span>
-
     <p v-if="!auth">{{ post.text }}</p>
-    <textarea
-      v-else
-      :value="post.text"
-      placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, iste. Dignissimos perferendis iusto molestias totam animi beatae odio aliquam ut minima nulla, doloribus quae natus fuga, voluptatibus illo! Cupiditate, commodi."
-      @change="handleChange"
-      name="text"
-    />
 
-    <button v-if="auth" @click="submitPost">Submit</button>
+    <template v-if="auth">
+      <div class="category">
+        <h3>Category</h3>
+        <input
+          list="categories"
+          type="text"
+          name="category"
+          @input="handleCat"
+          :value="post.category"
+          :disabled="!auth"
+        />
+        <datalist :disabled="!auth" id="categories" name="category" @change="handleChange">
+          <option value=""></option>
+          <option v-for="(c, i) in cats" :value="c" :key="i">
+            {{ c }}
+          </option>
+        </datalist>
+      </div>
+
+      <input
+        name="title"
+        :value="post.title"
+        placeholder="Title"
+        type="text"
+        @change="handleChange"
+        :disabled="!auth"
+      />
+
+      <span>{{ editedString(post.date, newPost ? null : post.edited) }}</span>
+
+      <textarea
+        :value="post.text"
+        placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, iste. Dignissimos perferendis iusto molestias totam animi beatae odio aliquam ut minima nulla, doloribus quae natus fuga, voluptatibus illo! Cupiditate, commodi."
+        @change="handleChange"
+        name="text"
+        :disabled="!auth"
+      />
+
+      <button v-if="auth" :disabled="!auth" @click="submitPost">Submit</button>
+    </template>
   </main>
 </template>
 
 <script>
-  import Modal from "../components/Modal.vue";
   import axios from "../plugins/axios";
   import { momentize, editedString } from "../assets/functions";
   export default {
     name: "post-page-wu",
-    components: {
-      Modal,
-    },
     methods: {
       editedString,
       momentize,

@@ -4,6 +4,7 @@ import About from './views/About.vue';
 import Work from './views/Work.vue';
 import Blog from './views/Blog.vue';
 import PostPage from './views/PostPage.vue';
+import store from './plugins/vuex';
 
 const titlify = pageName => `Will Umstead - ${ pageName }`;
 
@@ -60,6 +61,10 @@ const routes = [
                         meta: {
                             title: titlify('Blog Post Edit')
                         },
+                        beforeEnter: (to, from, next) => {
+                            const { id } = to.params;
+                            store.state.isWill ? next() : next(`/blog/post/${ id }`);
+                        }
                     }
                 ]
             },

@@ -21,7 +21,7 @@
           :value="post.category"
           :disabled="!auth"
         />
-        <datalist :disabled="!auth" id="categories" name="category" @change="handleChange">
+        <datalist :disabled="!auth" id="categories" name="category" @change="handlePostChange">
           <option value=""></option>
           <option v-for="(c, i) in cats" :value="c" :key="i">
             {{ c }}
@@ -34,7 +34,7 @@
         :value="post.title"
         placeholder="Title"
         type="text"
-        @change="handleChange"
+        @change="handlePostChange"
         :disabled="!auth"
       />
 
@@ -43,7 +43,7 @@
       <textarea
         :value="post.text"
         placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, iste. Dignissimos perferendis iusto molestias totam animi beatae odio aliquam ut minima nulla, doloribus quae natus fuga, voluptatibus illo! Cupiditate, commodi."
-        @change="handleChange"
+        @change="handlePostChange"
         name="text"
         :disabled="!auth"
       />
@@ -51,44 +51,54 @@
       <button v-if="auth" :disabled="!auth" @click="submitPost">Submit</button>
     </template>
   </main>
+  <section class="comments">
+    <h2>Comments</h2>
+    <Comment v-for="cmnt in post.comments" v-bind="cmnt" :key="cmnt.id" />
+    <form @submit="addComment">
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        @input="handleCommentChange"
+        :value="newComment.name"
+      />
+      <textarea
+        name="content"
+        placeholder="Comment"
+        @input="handleCommentChange"
+        :value="newComment.content"
+      />
+      <button>Add Comment</button>
+    </form>
+  </section>
 </template>
 
 <script>
   import axios from "../plugins/axios";
   import { momentize, editedString } from "../assets/functions";
+  import Comment from "../components/Comment.vue";
   export default {
     name: "post-page-wu",
+    components: { Comment },
     methods: {
       editedString,
       momentize,
       editPost() {
         this.$router.push(`${this.$route.path}/edit`);
       },
-      submitPost() {
+      async submitPost(e) {
+        e.preventDefault();
         this.newPost
-          ? axios
-              .post("/posts/new", this.post)
-              .then((r) => {
-                console.log(r);
-                this.$router.push(`/blog/post/${r.data.id}`);
-              })
-
-              .catch((err) => console.error(err))
-          : axios
-              .put(`/posts/${this.post.id}`, this.post)
-              .then((r) => {
-                console.log(r);
-                this.$router.push(`/blog/post/${this.post.id}`);
-              })
-
-              .catch((err) => console.error(err));
+          ? await axios.post("/posts/new", this.post)
+          : await axios.put(`/posts/${this.post.id}`, this.post);
+        this.$router.push(`/blog/post/${this.post.id}`);
       },
-      handleChange(e) {
+      handlePostChange(e) {
         this.post[e.target.name] = e.target.value;
       },
       handleCat(e) {
         const catName = e.target.value;
-        this.handleChange(e);
+        this.handlePostChange(e);
         this.cats = this.categories.filter((cat) => new RegExp(catName, "i").test(cat));
       },
       deletePost() {
@@ -99,6 +109,23 @@
               .catch((err) => console.error(err))
           : alert("You have chosen not to delete the post.");
       },
+      handleCommentChange(e) {
+        this.newComment[e.target.name] = e.target.value;
+      },
+      async addComment(e) {
+        e.preventDefault();
+        if (this.newComment.content && this.newComment.name) {
+          const stamp = this.newComment;
+          await axios.post("/comments/new", stamp);
+          this.post.comments.push(stamp);
+          this.newComment = {
+            post_id: this.$route.params.id,
+            content: "",
+            name: "",
+            date: Date.now().toString(),
+          };
+        } else alert("Both name and comment fields are required to post a comment.");
+      },
     },
     data() {
       return {
@@ -108,9 +135,15 @@
           edited: Date.now().toString(),
           title: "",
           category: "",
+          comments: [],
         },
         loading: true,
-        cats: this.$store.state.categories,
+        newComment: {
+          post_id: this.$route.params.id,
+          content: "",
+          name: "",
+          date: Date.now().toString(),
+        },
       };
     },
     mounted() {
@@ -118,6 +151,7 @@
         axios
           .get(`/posts/${this.$route.params.id}`)
           .then(({ data }) => {
+            console.log(data);
             this.post = data;
             this.loading = false;
           })
@@ -137,7 +171,7 @@
       isWill() {
         return this.$store.state.isWill;
       },
-      categories() {
+      cats() {
         return this.$store.state.categories;
       },
     },
@@ -229,6 +263,50 @@
         border: none;
         font-size: 2rem;
         text-transform: capitalize;
+      }
+    }
+  }
+
+  section.comments {
+    width: 100%;
+    box-sizing: border-box;
+    @include flex(column, center, flex-end);
+    background: linear-gradient($text-bg, transparent);
+
+    h2 {
+      width: 100%;
+      border-radius: 0 0 50% 0;
+      font-size: 3rem;
+      border-bottom: 2px groove $light;
+      border-radius: -5px;
+      margin: 10px auto 0;
+      text-align: center;
+    }
+
+    form {
+      width: 100%;
+      @include flex(column, center, center);
+
+      input,
+      textarea {
+        margin: 5px auto;
+      }
+
+      input {
+        font-size: 2rem;
+        text-align: center;
+        font-family: $header-font;
+      }
+
+      textarea {
+        font-size: 1.5rem;
+        font-family: $body-font;
+        resize: none;
+        width: 60%;
+      }
+
+      button {
+        @include button;
       }
     }
   }

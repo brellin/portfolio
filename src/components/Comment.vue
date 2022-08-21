@@ -29,23 +29,35 @@
 <style lang="scss">
   article.comment {
     width: calc(100% - 50px);
-    border: 2px groove $light;
-    border-top: 0;
-    border-right: 0;
-    border-radius: 25px 0 17.5% 25px;
+    border-bottom: 1px ridge $mid;
+    border-radius: 25px 0 25% 25px;
     box-sizing: border-box;
     @include flex(row, flex-start, flex-start);
 
+    @media (max-width: 800px) {
+      width: 100%;
+    }
+
     header {
-      border-right: 2px groove $light;
+      border: 1px ridge $mid;
+      border-bottom: 0;
+      border-top: 0;
       padding: 5px 10px;
       margin-right: 15px;
       border-radius: 25px;
       text-align: center;
+      width: min-content;
+      min-width: 10rem;
+      background-color: $mid;
 
       h3 {
         font-size: 2rem;
         margin: 5px;
+        color: $text-bg;
+      }
+
+      span {
+        color: $light;
       }
     }
 

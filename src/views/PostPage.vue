@@ -3,7 +3,7 @@
     <div class="buttons">
       <button @click="this.$router.back">Back</button>
       <button v-if="ending === 'edit'" @click="deletePost">X</button>
-      <button v-else @click="editPost">Edit</button>
+      <button v-else-if="auth" @click="editPost">Edit</button>
     </div>
 
     <h2 v-if="!auth">{{ post.title }}</h2>
@@ -277,10 +277,10 @@
       width: 100%;
       border-radius: 0 0 50% 0;
       font-size: 3rem;
-      border-bottom: 2px groove $light;
-      border-radius: -5px;
+      border-bottom: 2px ridge $mid;
       margin: 10px auto 0;
       text-align: center;
+      color: $dark;
     }
 
     form {

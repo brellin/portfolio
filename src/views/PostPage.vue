@@ -3,7 +3,7 @@
     <div class="buttons">
       <button @click="this.$router.back">Back</button>
       <button v-if="ending === 'edit'" @click="deletePost">X</button>
-      <button v-else-if="auth" @click="editPost">Edit</button>
+      <button v-else-if="isWill" @click="editPost">Edit</button>
     </div>
 
     <h2 v-if="!auth">{{ post.title }}</h2>
@@ -151,7 +151,6 @@
         axios
           .get(`/posts/${this.$route.params.id}`)
           .then(({ data }) => {
-            console.log(data);
             this.post = data;
             this.loading = false;
           })

@@ -63,6 +63,7 @@ const routes = [
                         },
                         beforeEnter: (to, from, next) => {
                             const { id } = to.params;
+                            console.log(store.state);
                             store.state.isWill ? next() : next(`/blog/post/${ id }`);
                         }
                     }

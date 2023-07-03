@@ -8,7 +8,7 @@
       </select>
     </div>
     <div :class="`post-wall ${posts.length === 0 ? 'pulse' : ''}`">
-      <Post v-for="p in posts" :key="p.id" v-bind="p" :loading="loading" />
+      <Post v-for="p in posts" :key="p._id" v-bind="p" :loading="loading" />
     </div>
   </main>
 </template>

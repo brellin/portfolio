@@ -1,5 +1,5 @@
 <template>
-  <div :class="`post${loading ? ' loading' : ''}`" @click="() => goToPost(id)">
+  <div :class="`post${loading ? ' loading' : ''}`" @click="() => goToPost(_id)">
     <h2>{{ title }}</h2>
     <span>{{ date && editedString(date, edited) }}</span>
   </div>
@@ -13,13 +13,13 @@ export default {
     title: String,
     date: String,
     edited: String,
-    id: Number,
+    _id: String,
     loading: Boolean,
   },
   methods: {
     editedString,
-    goToPost(id) {
-      this.$router.push(`/blog/post/${id}`);
+    goToPost(_id) {
+      this.$router.push(`/blog/post/${_id}`);
     },
   },
 };

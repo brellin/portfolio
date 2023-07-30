@@ -6,10 +6,7 @@
     <router-link exact to="/" class="home" @click="toggleOpen">Home</router-link>
     <router-link to="/about" class="about" @click="toggleOpen">About</router-link>
     <router-link to="/work" class="work" @click="toggleOpen">Work</router-link>
-    <router-link to="/blog" :class="`blog${ this.$route.fullPath.match(/\/blog\/post\/(\d|new)(\/edit)?/i)
-    ? ' active'
-    : ''
-    }`" @click="toggleOpen">Blog {{ }}</router-link>
+    <a href="https://brellin.dev" class="blog" target="_blank">Blog</a>
 
     <hr id="indicator" />
   </nav>

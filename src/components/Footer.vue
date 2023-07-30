@@ -4,11 +4,16 @@
 
     <div class="links">
       <a href="https://github.com/brellin" target="_blank" rel="noopener noreferrer" title="GitHub">
-        <font-awesome-icon :icon="[ 'fab', 'github' ]" />
+        <font-awesome-icon :icon="['fab', 'github']" />
       </a>
 
-      <a href="https://linkedin.com/in/brellin" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-        <font-awesome-icon :icon="[ 'fab', 'linkedin' ]" />
+      <a
+        href="https://linkedin.com/in/brellin"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="LinkedIn"
+      >
+        <font-awesome-icon :icon="['fab', 'linkedin']" />
       </a>
 
       <a href="mailto: william.c.umstead@gmail.com" title="Email">
@@ -16,13 +21,18 @@
       </a>
     </div>
 
-    <p>©2022 Will Umstead</p>
+    <p>©{{ thisYear }} Will Umstead</p>
   </footer>
 </template>
 
 <script>
 export default {
-  name: "global-footer",
+  name: 'global-footer',
+  computed: {
+    thisYear() {
+      return new Date().getFullYear();
+    }
+  }
 };
 </script>
 

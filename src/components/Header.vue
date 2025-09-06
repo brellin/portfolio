@@ -6,7 +6,7 @@
     <router-link exact to="/" class="home" @click="toggleOpen">Home</router-link>
     <router-link to="/about" class="about" @click="toggleOpen">About</router-link>
     <router-link to="/work" class="work" @click="toggleOpen">Work</router-link>
-    <a href="https://brellin.dev" class="blog" target="_blank">Blog</a>
+    <a href="https://blog.willumstead.com" class="blog" target="_blank">Blog</a>
 
     <hr id="indicator" />
   </nav>
